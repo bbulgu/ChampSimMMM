@@ -36,8 +36,10 @@ void O3_CPU::operate()
   complete_inflight_instruction(); // finalize execution
   execute_instruction();           // execute instructions
   schedule_instruction();          // schedule instructions
-  handle_memory_return();          // finalize memory transactions
-  operate_lsq();                   // execute memory transactions
+  handle_memory_return();          // finalize memory transactions             // the cpu that has the data writes it to the broadcast bus
+  operate_broadcast();             // TODO: deal with remote transactions      // other cpus read it from the bus to their inbox buffers
+  //clear the broadcast bus buffer after the data has been stored to the local buffers of the cpus
+  operate_lsq();                   // execute memory transactions              
 
   schedule_memory_instruction(); // schedule memory transactions
   dispatch_instruction();        // dispatch
@@ -50,6 +52,47 @@ void O3_CPU::operate()
   DISPATCH_BUFFER.operate();
   DECODE_BUFFER.operate();
 }
+
+/* partition the memory space */
+
+int address_to_cpu(unsigned long long address) {
+  return address % NUM_CPUS;
+}
+
+void InboxBuffer::write(PACKET* pkt){
+  buffer.push_back(pkt);
+}
+
+PACKET* InboxBuffer::get(uint64_t virtual_address){
+  std::list<PACKET*>::iterator it;
+  for (it = buffer.begin(); it != buffer.end(); ++it) {
+      if ((*it)->v_address == virtual_address) {
+        return *it;
+      }
+  }
+  return nullptr;
+}
+
+
+// should check the bus buffer if its not empty add all the new packets in the inbox buffers of all the cpus
+// this function should be called before loads start to execute
+// checks the inbox buffer, reads
+void O3_CPU::operate_broadcast()
+{
+  // read everything from the bus unless it's our own data  
+  for (std::list<PACKET>::iterator it = broadcast_bus.buffer.begin(); it != broadcast_bus.buffer.end(); ++it)
+  {
+    PACKET current = *it;
+    if (address_to_cpu(current.v_address) != cpu) 
+    {
+      inbox.write(&current);
+    }
+  }
+
+  // send the clear signal to the bus (when everybody has sent the signal, the bus will reset itself)
+  broadcast_bus.clear();  
+}
+
 
 void O3_CPU::initialize_core()
 {
@@ -348,6 +391,7 @@ void O3_CPU::do_translate_fetch(champsim::circular_buffer<ooo_model_instr>::iter
       dep_it->translated = INFLIGHT;
     }
   }
+
 }
 
 void O3_CPU::fetch_instruction()
@@ -644,7 +688,7 @@ void O3_CPU::do_memory_scheduling(champsim::circular_buffer<ooo_model_instr>::it
     }
   }
 
-  assert(num_added <= num_mem_ops);
+assert(num_added <= num_mem_ops);
 
   if (num_mem_ops == num_added) {
     rob_it->scheduled = COMPLETED;
@@ -689,8 +733,8 @@ struct instr_mem_will_produce {
     auto dmem_begin = std::begin(test.destination_memory);
     auto dmem_end = std::end(test.destination_memory);
     return std::find(dmem_begin, dmem_end, match_mem) != dmem_end;
-  }
-};
+    }
+  };
 
 struct sq_will_forward {
   const uint64_t match_id, match_addr;
@@ -736,6 +780,8 @@ void O3_CPU::add_load_queue(champsim::circular_buffer<ooo_model_instr>::iterator
     // If this entry is not waiting on RAW
     RTL0.push(lq_it);
   }
+
+
 }
 
 void O3_CPU::add_store_queue(champsim::circular_buffer<ooo_model_instr>::iterator rob_it, uint32_t data_index)
@@ -805,9 +851,23 @@ void O3_CPU::operate_lsq()
 
   while (load_issued < LQ_WIDTH && !RTL1.empty()) {
     int rq_index = execute_load(RTL1.front());
-
-    if (rq_index == -2)
+    
+    std::cout << "rq index =" << rq_index << std::endl;
+    
+    if (rq_index == -3)
+    {
+      std::cout << "Breaking -3" << std::endl;
+      RTL1.pop();
+      load_issued++;
       break;
+    }
+    
+    if (rq_index == -2)
+    {
+      std::cout << "Breaking" << std::endl;
+      break;
+    }
+     
 
     RTL1.pop();
     load_issued++;
@@ -839,11 +899,22 @@ int O3_CPU::do_translate_store(std::vector<LSQ_ENTRY>::iterator sq_it)
   if (rq_index != -2)
     sq_it->translated = INFLIGHT;
 
+    // sanity checks
+  std::cout << "translate store " << "ADDR: " << data_packet.address << ", virtual ADDR:" << data_packet.v_address << ", cpu: "  << data_packet.cpu << std::endl;
+
+
   return rq_index;
 }
 
 void O3_CPU::execute_store(std::vector<LSQ_ENTRY>::iterator sq_it)
 {
+    /* if this isn't the cpu that contains the address, do nothing */
+  if (address_to_cpu(sq_it->virtual_address) != cpu) {
+    std::cout << "execute store from a different cpu" << "ADDR: " << sq_it->physical_address << ", virtual ADDR:" << sq_it->virtual_address<< ", cpu:  idk "   << std::endl;
+    // TODO: add a while loop here to wait for the stuff to get in the inbox buffer
+    //return;  
+  }
+
   sq_it->fetched = COMPLETED;
   sq_it->event_cycle = current_cycle;
 
@@ -907,24 +978,46 @@ int O3_CPU::do_translate_load(std::vector<LSQ_ENTRY>::iterator lq_it)
 
 int O3_CPU::execute_load(std::vector<LSQ_ENTRY>::iterator lq_it)
 {
-  // add it to L1D
+
   PACKET data_packet;
-  data_packet.fill_level = L1D_bus.lower_level->fill_level;
-  data_packet.cpu = cpu;
-  data_packet.address = lq_it->physical_address;
-  data_packet.v_address = lq_it->virtual_address;
-  data_packet.instr_id = lq_it->instr_id;
-  data_packet.ip = lq_it->ip;
-  data_packet.type = LOAD;
-  data_packet.asid[0] = lq_it->asid[0];
-  data_packet.asid[1] = lq_it->asid[1];
-  data_packet.to_return = {&L1D_bus};
-  data_packet.lq_index_depend_on_me = {lq_it};
+  /* if this isn't the cpu that contains the address, do nothing */
+  int actual_cpu_for_this_address = address_to_cpu(lq_it->virtual_address);
+  if (actual_cpu_for_this_address != cpu) {
+    std::cout << "execute load from cpu " << cpu << " ADDR: " << lq_it->physical_address << ", virtual ADDR:" << lq_it->virtual_address<< ", actual cpu: " <<  actual_cpu_for_this_address << std::endl;
+    // TODO: add a while loop here to wait for the stuff to get in the inbox buffer
+    // return -3; 
+    PACKET* packet_ptr = nullptr; 
+    while (packet_ptr == nullptr) {
+      std::cout << "Waiting for my inbox to magically fill up" << std::endl;
+      packet_ptr = inbox.get(lq_it->virtual_address);
+    }
+    data_packet = *packet_ptr;
+  }
+
+  else {
+  // add it to L1D   
+
+    data_packet.fill_level = L1D_bus.lower_level->fill_level;
+    data_packet.cpu = cpu;
+    data_packet.address = lq_it->physical_address;
+    data_packet.v_address = lq_it->virtual_address;
+    data_packet.instr_id = lq_it->instr_id;
+    data_packet.ip = lq_it->ip;
+    data_packet.type = LOAD;
+    data_packet.asid[0] = lq_it->asid[0];
+    data_packet.asid[1] = lq_it->asid[1];
+    data_packet.to_return = {&L1D_bus};
+    data_packet.lq_index_depend_on_me = {lq_it};    
+    broadcast_bus.write(&data_packet);
+  }
+  /* otherwise, business as usual (send to l1D) */
 
   int rq_index = L1D_bus.lower_level->add_rq(&data_packet);
 
   if (rq_index != -2)
     lq_it->fetched = INFLIGHT;
+    // sanity checks
+  std::cout << "execute load " << "ADDR: " << data_packet.address << ", virtual ADDR:" << data_packet.v_address << ", cpu: "  << data_packet.cpu << std::endl;
 
   return rq_index;
 }
@@ -1091,6 +1184,11 @@ void O3_CPU::handle_memory_return()
       *merged = empty_entry;
     }
 
+    // DID IT
+    /* put it in the broadcast bus for the other cpus to read */
+    std::cout << "writing stuff on the broadcast bus!" << std::endl;
+    broadcast_bus.write(&l1d_entry);
+
     // remove this entry
     L1D_bus.PROCESSED.pop_front();
     --to_read;
@@ -1120,6 +1218,7 @@ void O3_CPU::retire_rob()
         data_packet.type = RFO;
         data_packet.asid[0] = sq_it->asid[0];
         data_packet.asid[1] = sq_it->asid[1];
+        
 
         auto result = L1D_bus.lower_level->add_wq(&data_packet);
         if (result != -2) {

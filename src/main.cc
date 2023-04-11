@@ -437,7 +437,8 @@ int main(int argc, char** argv)
     for (std::size_t i = 0; i < ooo_cpu.size(); ++i) {
       // read from trace
       while (ooo_cpu[i]->fetch_stall == 0 && ooo_cpu[i]->instrs_to_read_this_cycle > 0) {
-        ooo_cpu[i]->init_instruction(traces[i]->get());
+        ooo_model_instr next_instruction = traces[i]->get();
+        ooo_cpu[i]->init_instruction(next_instruction);
       }
 
       // heartbeat information
