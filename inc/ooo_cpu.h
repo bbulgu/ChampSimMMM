@@ -38,9 +38,13 @@ class CACHE;
 class InboxBuffer
 {
 public:
-  std::list<PACKET*> buffer;
-  PACKET* get(uint64_t virtual_address);
-  void write(PACKET* pkt);
+  int written_elements;
+  int read_elements;
+  int cpu;
+  std::list<PACKET> buffer;
+  PACKET get(uint64_t virtual_address);
+  void write(PACKET pkt);
+  void printBuffer();
 };
 
 class CacheBus : public MemoryRequestProducer
@@ -57,7 +61,7 @@ class O3_CPU : public champsim::operable
 public:
   /* TODO */
   InboxBuffer inbox;
-  BroadcastBus broadcast_bus;
+  BroadcastBus* broadcast_bus;
 
   uint32_t cpu = 0;
 
@@ -164,7 +168,7 @@ public:
   const btb_t btb_type;
   const ipref_t ipref_type;
 
-  O3_CPU(BroadcastBus* broadcast_bus, uint32_t cpu, double freq_scale, std::size_t dib_set, std::size_t dib_way, std::size_t dib_window, std::size_t ifetch_buffer_size,
+  O3_CPU(BroadcastBus* bb, uint32_t cpu, double freq_scale, std::size_t dib_set, std::size_t dib_way, std::size_t dib_window, std::size_t ifetch_buffer_size,
          std::size_t decode_buffer_size, std::size_t dispatch_buffer_size, std::size_t rob_size, std::size_t lq_size, std::size_t sq_size, unsigned fetch_width,
          unsigned decode_width, unsigned dispatch_width, unsigned schedule_width, unsigned execute_width, unsigned lq_width, unsigned sq_width,
          unsigned retire_width, unsigned mispredict_penalty, unsigned decode_latency, unsigned dispatch_latency, unsigned schedule_latency,
@@ -177,6 +181,7 @@ public:
         EXEC_LATENCY(execute_latency), ITLB_bus(rob_size, itlb), DTLB_bus(rob_size, dtlb), L1I_bus(rob_size, l1i), L1D_bus(rob_size, l1d),
         bpred_type(bpred_type), btb_type(btb_type), ipref_type(ipref_type)
   {
+    broadcast_bus = bb;
   }
 };
 
