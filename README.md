@@ -1,12 +1,11 @@
 <p align="center">
   <h1 align="center"> ChampSim </h1>
-  <p> ChampSim is a trace-based simulator for a microarchitecture study. You can sign up to the public mailing list by sending an empty mail to champsim+subscribe@googlegroups.com. If you have questions about how to use ChampSim, you can often receive a quicker response on the mailing list. Please reserve GitHub Issues for bugs. <p>
+  <p> ChampSim is a trace-based simulator for a microarchitecture study. If you have questions about how to use ChampSim, we encourage you to search the threads in the Discussions tab or start your own thread. If you are aware of a bug or have a feature request, open a new Issue. <p>
 </p>
 
-# Clone ChampSim repository
-```
-git clone https://github.com/ChampSim/ChampSim.git
-```
+# Using ChampSim
+
+ChampSim is the result of academic research. To support its continued growth, please cite our work when you publish results that use ChampSim by clicking "Cite this Repository" in the sidebar.
 
 # Compile
 
