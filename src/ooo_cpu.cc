@@ -32,7 +32,6 @@ int operation_counter = 0;
 
 void O3_CPU::operate()
 {
-  //std::cout<<"Operating cpu#" <<cpu <<std::endl;
   instrs_to_read_this_cycle = std::min((std::size_t)FETCH_WIDTH, IFETCH_BUFFER.size() - IFETCH_BUFFER.occupancy());
 
   retire_rob();                    // retire
@@ -62,8 +61,8 @@ int address_to_cpu(unsigned long long address) {
   return address % NUM_CPUS;
 }
 
-void InboxBuffer::write(PACKET pkt){
-  if (pkt.written_on_inbox)        // workaround if within one cycle a packet is written, used and written again (happens if the other cpus haven't written to their inbox yet)
+void InboxBuffer::write(PACKET& pkt){
+  if (pkt.written_on_inbox[cpu])        // workaround if within one cycle a packet is written, used and written again (happens if the other cpus haven't written to their inbox yet)
     return;
 
   for(list<PACKET>::iterator it = buffer.begin(); it!=buffer.end(); it++){
@@ -78,7 +77,9 @@ void InboxBuffer::write(PACKET pkt){
     std::cout << "Now there are " << written_elements << " written on the buffer in total" << std::endl;
   if (buffer.size() == 1000)
     std::cout << "I got so many elements man " << buffer.size() << " in cpu " << cpu << std::endl;
-  pkt.written_on_inbox = true; 
+  //std::cout << "Writing to my inbox" << std::endl;
+  //pkt.printPacket();
+  pkt.written_on_inbox[cpu] = true; 
   buffer.push_back(pkt);
   // printBuffer();  
 }
@@ -111,22 +112,15 @@ void O3_CPU::operate_broadcast()
   for (std::list<PACKET>::iterator it = broadcast_bus->buffer.begin(); it != broadcast_bus->buffer.end(); ++it)
   {
 
-    PACKET current = *it;
+    PACKET& current = *it;
     if (address_to_cpu(current.v_address) != cpu) 
     {
-      it->written_on_inbox = true;
-      // std::cout << "Writing to my buffer from bus, cpu#" << cpu << std::endl;
+      //current.written_on_inbox[cpu] = true;
       inbox.write(current);
-
-      //std::cout << cpu << " " << current.v_address << std::endl;
     }
   }
 
   // send the clear signal to the bus (when everybody has sent the signal, the bus will reset itself)
-  // broadcast_bus->printBus();
-  // std::cout<<"Printing the inbox buffer for cpu" << cpu << std::endl;
-
-  // inbox.printBuffer();
   broadcast_bus->clear(cpu);  
 }
 

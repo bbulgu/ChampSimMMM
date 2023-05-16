@@ -34,7 +34,7 @@ public:
   bool scheduled = false;
 
   // TODO: Should change it to arrays for multicpu support
-  bool written_on_inbox = false;
+  bool written_on_inbox[NUM_CPUS] = {false};
 
   void printPacket(){
     std::cout << "Virtual address: " << v_address << ", ip: " << ip << ", instr_id: " << instr_id << ", copied to inbox" << written_on_inbox << std::endl;

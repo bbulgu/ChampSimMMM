@@ -43,7 +43,7 @@ public:
   int cpu;
   std::list<PACKET> buffer;
   PACKET get(uint64_t virtual_address);
-  void write(PACKET pkt);
+  void write(PACKET& pkt);
   void printBuffer();
 };
 

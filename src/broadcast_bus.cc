@@ -25,6 +25,8 @@ void BroadcastBus::write(PACKET packet)            // (over)writes the packet
         std::cout << "Now there are " << items_written << " elements written in the bus in total." << std::endl;
     if ( packet.v_address == 140732575011232 && packet.instr_id == 97141)
         std::cout << "Writing the troublemaker on the bus" << std::endl;
+    //std::cout << "Writing to the bus" << std::endl;
+    //packet.printPacket();
     buffer.push_back(packet);
     // printBus();
 }
@@ -39,15 +41,22 @@ void BroadcastBus::printBus(){
     }
 
 } 
-
+/**/
 void BroadcastBus::clear(int cpuid)
 {
     for (std::list<PACKET>::iterator it = buffer.begin(); it != buffer.end(); ++it)
     {
         PACKET current = *it;
-        if (current.written_on_inbox) {
-            // std::cout << "Deleting packet from broadcast bus" << std::endl;
-            // current.printPacket();
+        int written_counter = 0;
+        for (int i=0; i<NUM_CPUS; i++) {
+            if (current.written_on_inbox[i])
+                written_counter++;
+        }
+        //std::cout << written_counter << std::endl;
+        // N-1 cpus must write it to their inbox, 1 cpu already "owns" the packet
+        if (written_counter == (NUM_CPUS-1)) {
+            //std::cout << "Deleting packet from broadcast bus" << std::endl;
+            //current.printPacket();
             it = buffer.erase(it);
         }
     }
