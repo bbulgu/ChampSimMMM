@@ -3,6 +3,26 @@
   <p> ChampSim is a trace-based simulator for a microarchitecture study. If you have questions about how to use ChampSim, we encourage you to search the threads in the Discussions tab or start your own thread. If you are aware of a bug or have a feature request, open a new Issue. <p>
 </p>
 
+# Using ChampsSimMMM
+
+ChampSimMMM is an extension/modification of the original Champsim to simulate a massive memory machine. 
+
+To run, configure how many cpus you need by changing `champsim_config.json`. In particular, change num_cores, and ooo_cpu. 
+
+Then, run the configuration script and make as usual..
+
+```
+$ ./config.sh <configuration file>
+$ make
+```
+
+When executing with multiple cores, make sure to feed the same trace num_cores amount of times.
+
+```
+$ bin/champsim --warmup_instructions 200000000 --simulation_instructions 500000000 ~/path/to/traces/600.perlbench_s-210B.champsimtrace.xz
+```
+
+
 # Using ChampSim
 
 ChampSim is the result of academic research. To support its continued growth, please cite our work when you publish results that use ChampSim by clicking "Cite this Repository" in the sidebar.
@@ -10,10 +30,9 @@ ChampSim is the result of academic research. To support its continued growth, pl
 # Compile
 
 ChampSim takes a JSON configuration script. Examine `champsim_config.json` for a fully-specified example. All options described in this file are optional and will be replaced with defaults if not specified. The configuration scrip can also be run without input, in which case an empty file is assumed.
-```
 $ ./config.sh <configuration file>
 $ make
-```
+
 
 # Download DPC-3 trace
 
