@@ -58,35 +58,60 @@ void O3_CPU::operate()
 /* partition the memory space */
 
 int address_to_cpu(unsigned long long address) {
-  return address % NUM_CPUS;
+   
+   return 0;
+  //return 0;
+}
+
+int partition_4(unsigned long long address) {
+                            
 }
 
 void InboxBuffer::write(PACKET& pkt){
   if (pkt.written_on_inbox[cpu])        // workaround if within one cycle a packet is written, used and written again (happens if the other cpus haven't written to their inbox yet)
-    return;
+      return;
+  pkt.written_on_inbox[cpu] = true;
+  buffer_map[pkt.instr_id] = pkt;
+}
 
+/*
+void InboxBuffer::write(PACKET& pkt){
+  pkt.belongs_to_cpu = address_to_cpu(pkt.v_address);
+  if (pkt.written_on_inbox[cpu])        // workaround if within one cycle a packet is written, used and written again (happens if the other cpus haven't written to their inbox yet)
+    return;
+  
+  // this loop makes it faster by checking it for duplicates! // TODO: FIGURE OUT WHY
   for(list<PACKET>::iterator it = buffer.begin(); it!=buffer.end(); it++){
     PACKET buffer_elt = *it;
     if (pkt.v_address == buffer_elt.v_address && pkt.ip == buffer_elt.ip && pkt.instr_id == buffer_elt.instr_id){
       return;
     }
   }
+  
 
   written_elements++;
+  
   if (written_elements % 1000 == 0)
     std::cout << "Now there are " << written_elements << " written on the buffer in total" << std::endl;
+  
   if (buffer.size() == 1000)
     std::cout << "I got so many elements man " << buffer.size() << " in cpu " << cpu << std::endl;
+  
   //std::cout << "Writing to my inbox" << std::endl;
   //pkt.printPacket();
   pkt.written_on_inbox[cpu] = true; 
   buffer.push_back(pkt);
   // printBuffer();  
 }
+*/
 
 void InboxBuffer::printBuffer(){
   for(list<PACKET>::iterator it = buffer.begin(); it!=buffer.end(); it++){
       (*it).printPacket();
+  }
+
+  for(map<uint64_t, PACKET>::iterator it = buffer_map.begin(); it!=buffer_map.end(); it++){
+      (it->second).printPacket();
   }
 }
 
@@ -113,10 +138,16 @@ void O3_CPU::operate_broadcast()
   {
 
     PACKET& current = *it;
-    if (address_to_cpu(current.v_address) != cpu) 
+    if (address_to_cpu(current.v_address) != cpu) // adding delays
     {
       //current.written_on_inbox[cpu] = true;
-      inbox.write(current);
+      //std::cout << current.cycle_written_on_bus <<  " " << current_cycle << std::endl;
+      if ((current.cycle_written_on_bus + BROADCAST_LATENCY) < current_cycle)
+        inbox.write(current);
+        /*
+      else
+        std::cout << "not my time" << std::endl;
+        */
     }
   }
 
@@ -753,12 +784,6 @@ void O3_CPU::do_sq_forward_to_lq(LSQ_ENTRY& sq_entry, LSQ_ENTRY& lq_entry)
     cout << sq_entry.instr_id << " remain_num_ops: " << lq_entry.rob_index->num_mem_ops << " cycle: " << current_cycle << endl;
   });
 
-  if ( lq_entry.virtual_address == 140732575011232 && lq_entry.instr_id == 97141)
-      std::cout << "Removing the address from my load queue cpu " << cpu << std::endl;
-
-  
-  
-
   LSQ_ENTRY empty_entry;
   lq_entry = empty_entry;
 }
@@ -794,8 +819,6 @@ void O3_CPU::add_load_queue(champsim::circular_buffer<ooo_model_instr>::iterator
   rob_it->source_added[data_index] = 1;
   lq_it->instr_id = rob_it->instr_id;
   lq_it->virtual_address = rob_it->source_memory[data_index];
-  if ( lq_it->virtual_address == 140732575011232 && lq_it->instr_id == 97141)
-    std::cout << "Adding the address to my load queue cpu " << cpu << std::endl;
   lq_it->ip = rob_it->ip;
   lq_it->rob_index = rob_it;
   lq_it->asid[0] = rob_it->asid[0];
@@ -818,11 +841,7 @@ void O3_CPU::add_load_queue(champsim::circular_buffer<ooo_model_instr>::iterator
     auto sq_it = std::find_if(std::begin(SQ), std::end(SQ), sq_will_forward(prior_it->instr_id, lq_it->virtual_address));
     if (sq_it != std::end(SQ)) {
       if (address_to_cpu(lq_it->virtual_address) == cpu && is_valid<LSQ_ENTRY>{}(*lq_it)) {
-          auto bd_pkt = PACKET{};
-          bd_pkt.v_address = lq_it->virtual_address;
-          bd_pkt.instr_id = lq_it->instr_id;
-          bd_pkt.ip = lq_it->ip;
-          broadcast_bus->write(bd_pkt);
+        broadcast_bus->write(*lq_it, current_cycle, address_to_cpu(lq_it->virtual_address), "add load queue");
       }
       
       do_sq_forward_to_lq(*sq_it, *lq_it);
@@ -956,13 +975,6 @@ int O3_CPU::do_translate_store(std::vector<LSQ_ENTRY>::iterator sq_it)
 
 void O3_CPU::execute_store(std::vector<LSQ_ENTRY>::iterator sq_it)
 {
-    /* if this isn't the cpu that contains the address, do nothing */
-  // if (address_to_cpu(sq_it->virtual_address) != cpu) {
-    //std::cout << "execute store from a different cpu" << "ADDR: " << sq_it->physical_address << ", virtual ADDR:" << sq_it->virtual_address<< ", cpu:  idk "   << std::endl;
-    // TODO: add a while loop here to wait for the stuff to get in the inbox buffer
-    // return;  
-  // }
-
   sq_it->fetched = COMPLETED;
   sq_it->event_cycle = current_cycle;
 
@@ -989,19 +1001,9 @@ void O3_CPU::execute_store(std::vector<LSQ_ENTRY>::iterator sq_it)
           
           LSQ_ENTRY lq_it = *(dependent->lq_index[j]);
           if (address_to_cpu(lq_it.virtual_address) == cpu && is_valid<LSQ_ENTRY>{}(lq_it)) {
-            auto bd_pkt = PACKET{};
-            bd_pkt.v_address = lq_it.virtual_address;
-            bd_pkt.instr_id = lq_it.instr_id;
-            bd_pkt.ip = lq_it.ip;
-            //std::cout << " instr_id: " << lq_it.instr_id << std::endl;
-            broadcast_bus->write(bd_pkt);
-            //std::cout << "Writing to my bus " << std::endl;
+            broadcast_bus->write(lq_it, current_cycle, address_to_cpu(lq_it.virtual_address), "execute store");            //std::cout << "Writing to my bus " << std::endl;
           }
-          
-          // now we can resolve RAW dependency
-          //std::cout << "Asserting for cpu " << cpu << std::endl;
-          //std::cout << lq_it.producer_id << std::endl;
-          
+                    
           // update corresponding LQ entrys
           if (address_to_cpu(sq_it->virtual_address) == cpu)
           {
@@ -1227,18 +1229,11 @@ void O3_CPU::handle_memory_return()
       merged->event_cycle = current_cycle;
       merged->rob_index->num_mem_ops--;
       merged->rob_index->event_cycle = current_cycle;
-      if ( merged->virtual_address == 140732575011232 && merged->instr_id == 97141)
-        std::cout << "we have a match in cpu " << cpu << std::endl;
 
       if (merged->rob_index->num_mem_ops == 0)
         inflight_mem_executions++;
 
-      auto bd_pkt = PACKET{};
-      bd_pkt.v_address = merged->virtual_address;
-      bd_pkt.instr_id = merged->instr_id;
-      bd_pkt.ip = merged->ip;
-      broadcast_bus->write(bd_pkt);
-      
+      broadcast_bus->write(*merged, current_cycle, address_to_cpu(merged->virtual_address), "handle memory return");      
       //std::cout << cpu << "W" << l1d_entry.v_address << std::endl;
 
       LSQ_ENTRY empty_entry;
@@ -1253,24 +1248,24 @@ void O3_CPU::handle_memory_return()
 
   operate_broadcast();             // TODO: deal with remote transactions      // other cpus read it from the bus to their inbox buffers
 
-  auto nvalid = std::count_if(std::begin(LQ), std::end(LQ), is_valid<LSQ_ENTRY>{});
+  //auto nvalid = std::count_if(std::begin(LQ), std::end(LQ), is_valid<LSQ_ENTRY>{});
 
-  std::list<PACKET>::iterator it;
   for (auto lq_it = std::begin(LQ); lq_it != std::end(LQ); ++lq_it) {
-
-    //std::cout << "Reading from the inbox buffer!" << std::endl;
-    //std::cout << inbox.buffer.size() << std::endl;
-    // search lq for entry with the same ip, instr_id and address
-    for (it = inbox.buffer.begin(); it != inbox.buffer.end(); it++) {
-      PACKET remote_packet = *it;
-
-      if (is_valid<LSQ_ENTRY>{}(*lq_it)) {
-        LSQ_ENTRY& lsq_entry = *lq_it;
+    
+    if (is_valid<LSQ_ENTRY>{}(*lq_it)) {
+      LSQ_ENTRY& lsq_entry = *lq_it;
+      auto find = inbox.buffer_map.find(lsq_entry.instr_id);
+      if (find != inbox.buffer_map.end())
+      {
+        PACKET remote_packet = find->second;
         if (remote_packet.ip == lsq_entry.ip && remote_packet.v_address == lsq_entry.virtual_address && remote_packet.instr_id == lsq_entry.instr_id)
         {
+          total_broadcast_delay += BROADCAST_LATENCY;
+
           lsq_entry.fetched = COMPLETED;
           lsq_entry.event_cycle = current_cycle;
           lsq_entry.rob_index->num_mem_ops--;
+          // adding delays: but why do all of them have the same # of cycles in total
           lsq_entry.rob_index->event_cycle = current_cycle;
 
           if (lsq_entry.rob_index->num_mem_ops == 0)
@@ -1283,11 +1278,13 @@ void O3_CPU::handle_memory_return()
           // remote_packet.printPacket();
           inbox.read_elements++;
           //std::cout << "CPU " << cpu << " has " << inbox.read_elements << " read elements" << std::endl;
-          it = inbox.buffer.erase(it);
+          inbox.buffer_map.erase(find);
+
           break;
         }
       }
-    }    
+    }
+        
 
 
   }
@@ -1319,6 +1316,9 @@ void O3_CPU::retire_rob()
         data_packet.asid[0] = sq_it->asid[0];
         data_packet.asid[1] = sq_it->asid[1];
         
+        if (sq_it->instr_id == 175) {
+          std::cout << "retiring 175 in cpu " << cpu << std::endl;
+        }
 
         auto result = L1D_bus.lower_level->add_wq(&data_packet);
         if (result != -2) {
@@ -1337,8 +1337,10 @@ void O3_CPU::retire_rob()
     ROB.pop_front();
     completed_executions--;
     num_retired++;
+    /*
     if (num_retired % 1000 == 0)
       std::cout << "In cpu " << cpu << " retired " << num_retired << " operations" << std::endl;
+    */
     retire_bandwidth--;
   }
 

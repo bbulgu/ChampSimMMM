@@ -16,7 +16,8 @@ class BroadcastBus
 
     std::list<PACKET>::iterator read();           // returns an iterator that points to the beginning of the buffer
 
-    void write(PACKET packet);                    // (over)writes the packet
+    void write(PACKET& packet, uint64_t cycle_written);                    // (over)writes the packet
+    void write(LSQ_ENTRY entry, uint64_t cycle_written, int belongs_to_cpu, std::string where);
     void printBus(); 
     void clear(int cpuid);                        // remove everything at the end of the cycle
 

@@ -419,7 +419,14 @@ int main(int argc, char** argv)
 
     for (auto op : operables) {
       try {
-        op->_operate();
+        O3_CPU* current_cpu = dynamic_cast<O3_CPU*>(op);
+        if (current_cpu == nullptr)
+          op->_operate();
+        else 
+          if (!(simulation_complete[current_cpu->cpu]))
+            op->_operate();
+          else
+            cout << "cpu " << current_cpu->cpu << " is running ahead " << endl;
       } catch (champsim::deadlock& dl) {
         // ooo_cpu[dl.which]->print_deadlock();
         // std::cout << std::endl;
@@ -432,6 +439,7 @@ int main(int argc, char** argv)
         abort();
       }
     }
+
     std::sort(std::begin(operables), std::end(operables), champsim::by_next_operate());
 
     for (std::size_t i = 0; i < ooo_cpu.size(); ++i) {
@@ -480,7 +488,8 @@ int main(int argc, char** argv)
 
         cout << "Finished CPU " << i << " instructions: " << ooo_cpu[i]->finish_sim_instr << " cycles: " << ooo_cpu[i]->finish_sim_cycle;
         cout << " cumulative IPC: " << ((float)ooo_cpu[i]->finish_sim_instr / ooo_cpu[i]->finish_sim_cycle);
-        cout << " (Simulation time: " << elapsed_hour << " hr " << elapsed_minute << " min " << elapsed_second << " sec) " << endl;
+        cout << " (Simulation time: " << elapsed_hour << " hr " << elapsed_minute << " min " << elapsed_second << " sec) ";
+        cout << " total delay caused by remote accesses " << ooo_cpu[i]->total_broadcast_delay << endl;
 
         for (auto it = caches.rbegin(); it != caches.rend(); ++it)
           record_roi_stats(i, *it);
@@ -501,6 +510,8 @@ int main(int argc, char** argv)
            << " cumulative IPC: " << (float)(ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr) / (ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle);
       cout << " instructions: " << ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr
            << " cycles: " << ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle << endl;
+      cout << "The buffer contains " << endl;
+      //ooo_cpu[i]->inbox.printBuffer();
       for (auto it = caches.rbegin(); it != caches.rend(); ++it)
         print_sim_stats(i, *it);
     }

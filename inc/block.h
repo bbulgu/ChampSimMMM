@@ -33,11 +33,17 @@ class PACKET
 public:
   bool scheduled = false;
 
+  int belongs_to_cpu;
+
+  std::string where;
+
   // TODO: Should change it to arrays for multicpu support
   bool written_on_inbox[NUM_CPUS] = {false};
 
+  uint64_t cycle_written_on_bus;
+
   void printPacket(){
-    std::cout << "Virtual address: " << v_address << ", ip: " << ip << ", instr_id: " << instr_id << ", copied to inbox" << written_on_inbox << std::endl;
+    std::cout << "Virtual address: " << v_address << ", ip: " << ip << ", instr_id: " << instr_id << ", belongs to cpu: " << belongs_to_cpu << ", written in method: " << where << std::endl;
   }
 
   uint8_t asid[2] = {std::numeric_limits<uint8_t>::max(), std::numeric_limits<uint8_t>::max()}, type = 0, fill_level = 0, pf_origin_level = 0;

@@ -5,28 +5,36 @@
 #include "broadcast_bus.h"
 
 
-int address_to_cpu2(unsigned long long address) {
-  return address % NUM_CPUS;
-}
-
 // reads a packet from the bus buffer
 std::list<PACKET>::iterator BroadcastBus::read(){
     //  std::cout << "The read method of the broadcast bus has been invoked." << std::endl;
      return buffer.begin();
-}                          
+}                      
+
+void BroadcastBus::write(LSQ_ENTRY lq_it, uint64_t cycle_written, int belongs_to_cpu, std::string where)
+{
+    auto bd_pkt = PACKET{};
+    bd_pkt.v_address = lq_it.virtual_address;
+    bd_pkt.instr_id = lq_it.instr_id;
+    bd_pkt.ip = lq_it.ip;
+    bd_pkt.where = where;
+    bd_pkt.belongs_to_cpu = belongs_to_cpu;
+    write(bd_pkt, cycle_written);
+}
 
 // adds a packet to the bus buffer 
-void BroadcastBus::write(PACKET packet)            // (over)writes the packet
+void BroadcastBus::write(PACKET& packet, uint64_t cycle_written)            // (over)writes the packet
 {
     items_written++;
     // std::cout << "Writing to the bus" << std::endl;
     // packet.printPacket();
+    /*
     if (items_written % 1000 == 0)
         std::cout << "Now there are " << items_written << " elements written in the bus in total." << std::endl;
-    if ( packet.v_address == 140732575011232 && packet.instr_id == 97141)
-        std::cout << "Writing the troublemaker on the bus" << std::endl;
-    //std::cout << "Writing to the bus" << std::endl;
+    */
+    //std::cout << buffer.size() << std::endl;
     //packet.printPacket();
+    packet.cycle_written_on_bus = cycle_written;
     buffer.push_back(packet);
     // printBus();
 }
@@ -36,7 +44,6 @@ void BroadcastBus::printBus(){
     for (std::list<PACKET>::iterator it = buffer.begin(); it != buffer.end(); ++it)
     {
         PACKET current = *it;
-        int cpu = address_to_cpu2(current.v_address);
         current.printPacket();
     }
 

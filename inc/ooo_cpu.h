@@ -21,6 +21,7 @@
 #include <functional>
 #include <queue>
 #include <list>
+#include <map>
 
 #include "broadcast_bus.h"
 
@@ -42,6 +43,7 @@ public:
   int read_elements;
   int cpu;
   std::list<PACKET> buffer;
+  std::map<uint64_t, PACKET> buffer_map;
   PACKET get(uint64_t virtual_address);
   void write(PACKET& pkt);
   void printBuffer();
@@ -64,6 +66,7 @@ public:
   BroadcastBus* broadcast_bus;
 
   uint32_t cpu = 0;
+  uint64_t total_broadcast_delay = 0;
 
   // instruction
   uint64_t instr_unique_id = 0, completed_executions = 0, begin_sim_cycle = 0, begin_sim_instr = 0, last_sim_cycle = 0, last_sim_instr = 0,
@@ -93,6 +96,7 @@ public:
   // Constants
   const unsigned FETCH_WIDTH, DECODE_WIDTH, DISPATCH_WIDTH, SCHEDULER_SIZE, EXEC_WIDTH, LQ_WIDTH, SQ_WIDTH, RETIRE_WIDTH;
   const unsigned BRANCH_MISPREDICT_PENALTY, SCHEDULING_LATENCY, EXEC_LATENCY;
+  const unsigned BROADCAST_LATENCY = 50;          // NEW STUFF: TODO: ADD TO CONSTRUCTOR, CONFIGURE IN OOO_CPU.CC, CONFIGURE THE SCRIPT
 
   // store array, this structure is required to properly handle store
   // instructions
