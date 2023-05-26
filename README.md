@@ -7,7 +7,7 @@
 
 ChampSimMMM is an extension/modification of the original Champsim to simulate a massive memory machine. 
 
-To run, configure how many cpus you need by changing `champsim_config.json`. In particular, change num_cores, and ooo_cpu. 
+To run, configure how many cpus you need by changing `champsim_config.json`. In particular, change `num_cores` to the number of cores you want to simulate, and make sure `ooo_cpu` has that many cores. 
 
 Then, run the configuration script and make as usual..
 
@@ -16,10 +16,12 @@ $ ./config.sh <configuration file>
 $ make
 ```
 
-When executing with multiple cores, make sure to feed the same trace num_cores amount of times.
+When executing with multiple cores, make sure to feed the same trace num_cores amount of times. 
+
+Here's an example with 3 cores:
 
 ```
-$ bin/champsim --warmup_instructions 200000000 --simulation_instructions 500000000 ~/path/to/traces/600.perlbench_s-210B.champsimtrace.xz
+$ bin/champsim --warmup_instructions 200000000 --simulation_instructions 500000000 ~/path/to/traces/600.perlbench_s-210B.champsimtrace.xz ~/path/to/traces/600.perlbench_s-210B.champsimtrace.xz ~/path/to/traces/600.perlbench_s-210B.champsimtrace.xz
 ```
 
 
