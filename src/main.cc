@@ -419,14 +419,13 @@ int main(int argc, char** argv)
 
     for (auto op : operables) {
       try {
+        // only operate if the cpu hasn't finished 
         O3_CPU* current_cpu = dynamic_cast<O3_CPU*>(op);
         if (current_cpu == nullptr)
           op->_operate();
         else 
           if (!(simulation_complete[current_cpu->cpu]))
             op->_operate();
-          else
-            cout << "cpu " << current_cpu->cpu << " is running ahead " << endl;
       } catch (champsim::deadlock& dl) {
         // ooo_cpu[dl.which]->print_deadlock();
         // std::cout << std::endl;
@@ -488,8 +487,8 @@ int main(int argc, char** argv)
 
         cout << "Finished CPU " << i << " instructions: " << ooo_cpu[i]->finish_sim_instr << " cycles: " << ooo_cpu[i]->finish_sim_cycle;
         cout << " cumulative IPC: " << ((float)ooo_cpu[i]->finish_sim_instr / ooo_cpu[i]->finish_sim_cycle);
-        cout << " (Simulation time: " << elapsed_hour << " hr " << elapsed_minute << " min " << elapsed_second << " sec) ";
-        cout << " total delay caused by remote accesses " << ooo_cpu[i]->total_broadcast_delay << endl;
+        cout << " (Simulation time: " << elapsed_hour << " hr " << elapsed_minute << " min " << elapsed_second << " sec) " << endl;
+        //cout << " total delay caused by remote accesses " << ooo_cpu[i]->total_broadcast_delay << endl;
 
         for (auto it = caches.rbegin(); it != caches.rend(); ++it)
           record_roi_stats(i, *it);
