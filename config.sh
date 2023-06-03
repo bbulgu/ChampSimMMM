@@ -79,7 +79,7 @@ const_names = {
 # Begin default core model definition
 ###
 
-default_root = { 'executable_name': 'bin/champsim', 'block_size': 64, 'page_size': 4096, 'heartbeat_frequency': 10000000, 'num_cores': 1, 'DIB': {}, 'L1I': {}, 'L1D': {}, 'L2C': {}, 'ITLB': {}, 'DTLB': {}, 'STLB': {}, 'LLC': {}, 'physical_memory': {}, 'virtual_memory': {}}
+default_root = { 'executable_name': 'bin/champsim', 'block_size': 64, 'page_size': 4096, 'heartbeat_frequency': 10000000, 'num_cores': 1, 'DIB': {}, 'L1I': {}, 'L1D': {}, 'ITLB': {}, 'DTLB': {}, 'STLB': {}, 'physical_memory': {}, 'virtual_memory': {}}
 
 # Read the config file
 if len(sys.argv) >= 2:
@@ -93,11 +93,9 @@ default_core = { 'broadcast_latency': 50, 'frequency' : 4000, 'ifetch_buffer_siz
 default_dib  = { 'window_size': 16,'sets': 32, 'ways': 8 }
 default_l1i  = { 'sets': 64, 'ways': 8, 'rq_size': 64, 'wq_size': 64, 'pq_size': 32, 'mshr_size': 8, 'latency': 4, 'fill_latency': 1, 'max_read': 2, 'max_write': 2, 'prefetch_as_load': False, 'virtual_prefetch': True, 'wq_check_full_addr': True, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no_instr', 'replacement': 'lru'}
 default_l1d  = { 'sets': 64, 'ways': 12, 'rq_size': 64, 'wq_size': 64, 'pq_size': 8, 'mshr_size': 16, 'latency': 5, 'fill_latency': 1, 'max_read': 2, 'max_write': 2, 'prefetch_as_load': False, 'virtual_prefetch': False, 'wq_check_full_addr': True, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru'}
-default_l2c  = { 'sets': 1024, 'ways': 8, 'rq_size': 32, 'wq_size': 32, 'pq_size': 16, 'mshr_size': 32, 'latency': 10, 'fill_latency': 1, 'max_read': 1, 'max_write': 1, 'prefetch_as_load': False, 'virtual_prefetch': False, 'wq_check_full_addr': False, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru'}
 default_itlb = { 'sets': 16, 'ways': 4, 'rq_size': 16, 'wq_size': 16, 'pq_size': 0, 'mshr_size': 8, 'latency': 1, 'fill_latency': 1, 'max_read': 2, 'max_write': 2, 'prefetch_as_load': False, 'virtual_prefetch': True, 'wq_check_full_addr': True, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru'}
 default_dtlb = { 'sets': 16, 'ways': 4, 'rq_size': 16, 'wq_size': 16, 'pq_size': 0, 'mshr_size': 8, 'latency': 1, 'fill_latency': 1, 'max_read': 2, 'max_write': 2, 'prefetch_as_load': False, 'virtual_prefetch': False, 'wq_check_full_addr': True, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru'}
 default_stlb = { 'sets': 128, 'ways': 12, 'rq_size': 32, 'wq_size': 32, 'pq_size': 0, 'mshr_size': 16, 'latency': 8, 'fill_latency': 1, 'max_read': 1, 'max_write': 1, 'prefetch_as_load': False, 'virtual_prefetch': False, 'wq_check_full_addr': False, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru'}
-default_llc  = { 'sets': 2048*config_file['num_cores'], 'ways': 16, 'rq_size': 32*config_file['num_cores'], 'wq_size': 32*config_file['num_cores'], 'pq_size': 32*config_file['num_cores'], 'mshr_size': 64*config_file['num_cores'], 'latency': 20, 'fill_latency': 1, 'max_read': config_file['num_cores'], 'max_write': config_file['num_cores'], 'prefetch_as_load': False, 'virtual_prefetch': False, 'wq_check_full_addr': False, 'prefetch_activate': 'LOAD,PREFETCH', 'prefetcher': 'no', 'replacement': 'lru', 'name': 'LLC', 'lower_level': 'DRAM' }
 default_pmem = { 'name': 'DRAM', 'frequency': 3200, 'channels': 1, 'ranks': 1, 'banks': 8, 'rows': 65536, 'columns': 128, 'lines_per_column': 8, 'channel_width': 8, 'wq_size': 64, 'rq_size': 64, 'tRP': 12.5, 'tRCD': 12.5, 'tCAS': 12.5, 'turn_around_time': 7.5 }
 default_vmem = { 'size': 8589934592, 'num_levels': 5, 'minor_fault_penalty': 200 }
 default_ptw = { 'pscl5_set' : 1, 'pscl5_way' : 2, 'pscl4_set' : 1, 'pscl4_way': 4, 'pscl3_set' : 2, 'pscl3_way' : 4, 'pscl2_set' : 4, 'pscl2_way': 8, 'ptw_rq_size': 16, 'ptw_mshr_size': 5, 'ptw_max_read': 2, 'ptw_max_write': 2}
@@ -123,7 +121,6 @@ cores = config_file.get('ooo_cpu', [{}])
 # Index the cache array by names
 caches = {c['name']: c for c in config_file.get('cache',[])}
 
-print(config_file['ooo_cpu'][0]['broadcast_latency'])
 
 # Default branch predictor and BTB
 for i in range(len(cores)):
@@ -138,14 +135,10 @@ if original_size <= config_file['num_cores']:
 else:
     cores = cores[:(config_file['num_cores'] - original_size)]
 
-# Append LLC to cache array
-# LLC operates at maximum freqency of cores, if not already specified
-caches['LLC'] = ChainMap(caches.get('LLC',{}), config_file['LLC'].copy(), {'frequency': max(cpu['frequency'] for cpu in cores)}, default_llc.copy())
-
 # If specified in the core, move definition to cache array
 for cpu in cores:
     # Assign defaults that are unique per core
-    for cache_name in ('L1I', 'L1D', 'L2C', 'ITLB', 'DTLB', 'STLB'):
+    for cache_name in ('L1I', 'L1D', 'ITLB', 'DTLB', 'STLB'):
         if isinstance(cpu[cache_name], dict):
             cpu[cache_name] = ChainMap(cpu[cache_name], {'name': cpu['name'] + '_' + cache_name}, config_file[cache_name].copy())
             caches[cpu[cache_name]['name']] = cpu[cache_name]
@@ -154,25 +147,17 @@ for cpu in cores:
 # Assign defaults that are unique per core
 for cpu in cores:
     cpu['PTW'] = ChainMap(cpu.get('PTW',{}), config_file.get('PTW', {}), {'name': cpu['name'] + '_PTW', 'cpu': cpu['index'], 'frequency': cpu['frequency'], 'lower_level': cpu['L1D']}, default_ptw.copy())
-    caches[cpu['L1I']] = ChainMap(caches[cpu['L1I']], {'frequency': cpu['frequency'], 'lower_level': cpu['L2C']}, default_l1i.copy())
-    caches[cpu['L1D']] = ChainMap(caches[cpu['L1D']], {'frequency': cpu['frequency'], 'lower_level': cpu['L2C']}, default_l1d.copy())
+    caches[cpu['L1I']] = ChainMap(caches[cpu['L1I']], {'frequency': cpu['frequency'], 'lower_level': 'DRAM'}, default_l1i.copy())
+    caches[cpu['L1D']] = ChainMap(caches[cpu['L1D']], {'frequency': cpu['frequency'], 'lower_level': 'DRAM'}, default_l1d.copy())
     caches[cpu['ITLB']] = ChainMap(caches[cpu['ITLB']], {'frequency': cpu['frequency'], 'lower_level': cpu['STLB']}, default_itlb.copy())
     caches[cpu['DTLB']] = ChainMap(caches[cpu['DTLB']], {'frequency': cpu['frequency'], 'lower_level': cpu['STLB']}, default_dtlb.copy())
 
-    # L2C
-    cache_name = caches[cpu['L1D']]['lower_level']
-    if cache_name != 'DRAM':
-        caches[cache_name] = ChainMap(caches[cache_name], {'frequency': cpu['frequency'], 'lower_level': 'LLC'}, default_l2c.copy())
 
     # STLB
     cache_name = caches[cpu['DTLB']]['lower_level']
     if cache_name != 'DRAM':
         caches[cache_name] = ChainMap(caches[cache_name], {'frequency': cpu['frequency'], 'lower_level': cpu['PTW']['name']}, default_stlb.copy())
 
-    # LLC
-    cache_name = caches[caches[cpu['L1D']]['lower_level']]['lower_level']
-    if cache_name != 'DRAM':
-        caches[cache_name] = ChainMap(caches[cache_name], default_llc.copy())
 
 # Remove caches that are inaccessible
 accessible = [False]*len(caches)
@@ -282,17 +267,15 @@ for cache in caches.values():
         opts += ' -Dprefetcher_final_stats=' + cache['prefetcher_final_stats']
         # These function names are deprecated, but we still permit them
         opts += ' -Dl1d_prefetcher_initialize=' + cache['prefetcher_initialize']
-        opts += ' -Dl2c_prefetcher_initialize=' + cache['prefetcher_initialize']
-        opts += ' -Dllc_prefetcher_initialize=' + cache['prefetcher_initialize']
+
+
         opts += ' -Dl1d_prefetcher_operate=' + cache['prefetcher_cache_operate']
-        opts += ' -Dl2c_prefetcher_operate=' + cache['prefetcher_cache_operate']
-        opts += ' -Dllc_prefetcher_operate=' + cache['prefetcher_cache_operate']
+
+
         opts += ' -Dl1d_prefetcher_cache_fill=' + cache['prefetcher_cache_fill']
-        opts += ' -Dl2c_prefetcher_cache_fill=' + cache['prefetcher_cache_fill']
-        opts += ' -Dllc_prefetcher_cache_fill=' + cache['prefetcher_cache_fill']
+
         opts += ' -Dl1d_prefetcher_final_stats=' + cache['prefetcher_final_stats']
-        opts += ' -Dl2c_prefetcher_final_stats=' + cache['prefetcher_final_stats']
-        opts += ' -Dllc_prefetcher_final_stats=' + cache['prefetcher_final_stats']
+
         libfilenames['pref_' + cache['prefetcher_name'] + '.a'] = (fname, opts)
 
 for cpu in cores:
@@ -464,7 +447,7 @@ with open(instantiation_file_name, 'wt') as wfp:
         wfp.write(cpu_fmtstr.format(**cpu)) # modify cores to add bb
 
     wfp.write('std::array<O3_CPU*, NUM_CPUS> ooo_cpu {\n')
-    wfp.write(', '.join('&{name}'.format(**elem) for elem in cores)) 
+    wfp.write(', '.join('&{name}'.format(**elem) for elem in cores))
     wfp.write('\n};\n')
 
     wfp.write('std::array<CACHE*, NUM_CACHES> caches {\n')
@@ -738,4 +721,3 @@ with open('Makefile', 'wt') as wfp:
 # Configuration cache
 with open(config_cache_name, 'wt') as wfp:
     json.dump(libfilenames, wfp)
-
