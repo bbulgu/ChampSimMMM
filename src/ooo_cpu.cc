@@ -57,10 +57,13 @@ void O3_CPU::operate()
 
 /* partition the memory space */
 
-int address_to_cpu(unsigned long long address) {
-   
-   return 0;
-  //return 0;
+int O3_CPU::address_to_cpu(unsigned long long address) {
+  if (memory_partitioning_method == "basic")
+    return address % NUM_CPUS;
+  else if (memory_partitioning_method == "zero")
+    return 0;
+  else // default
+    return address % NUM_CPUS; 
 }
 
 int partition_4(unsigned long long address) {
