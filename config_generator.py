@@ -8,7 +8,7 @@ heartbeat_frequency_default = 10000000
 # configurable stuff, change here
 
 # for the config file
-num_cpus = 64
+num_cpus = 3
 broadcast_latency = 120  # TODO: Make this configurable in the script
 rob_size = 400
 memory_partitioning_method = "zero"
@@ -240,6 +240,9 @@ for trace in range(num_cpus):
 os.system(f"bin/champsim --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str}")
 print("finished everything.")
 
+# TODO: Change main champsim file to only output the necessary stuff
+# TODO: Pipe the output to a file
+# TODO: Create a script to get times from files
 # TODO: Add different interleaving options
 # TODO: Add some error handling
 # TODO: Make this script run the simulator as well
