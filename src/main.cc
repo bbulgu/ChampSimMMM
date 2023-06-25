@@ -80,7 +80,7 @@ void print_roi_stats(uint32_t cpu, CACHE* cache)
     TOTAL_HIT += cache->roi_hit[cpu][i];
     TOTAL_MISS += cache->roi_miss[cpu][i];
   }
-
+  /*
   if (TOTAL_ACCESS > 0) {
     cout << cache->NAME;
     cout << " TOTAL     ACCESS: " << setw(10) << TOTAL_ACCESS << "  HIT: " << setw(10) << TOTAL_HIT << "  MISS: " << setw(10) << TOTAL_MISS << endl;
@@ -115,6 +115,7 @@ void print_roi_stats(uint32_t cpu, CACHE* cache)
     // (cache->total_miss_latency)/TOTAL_MISS << " cycles " <<
     // cache->total_miss_latency << "/" << TOTAL_MISS<< endl;
   }
+  */
 }
 
 void print_sim_stats(uint32_t cpu, CACHE* cache)
@@ -509,13 +510,17 @@ int main(int argc, char** argv)
            << " cumulative IPC: " << (float)(ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr) / (ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle);
       cout << " instructions: " << ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr
            << " cycles: " << ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle << endl;
-      cout << "The buffer contains " << endl;
+      //cout << "The buffer contains " << endl;
       //ooo_cpu[i]->inbox.printBuffer();
+      /*
       for (auto it = caches.rbegin(); it != caches.rend(); ++it)
         print_sim_stats(i, *it);
+        */
     }
+    
   }
 
+  /*
   cout << endl << "Region of Interest Statistics" << endl;
   for (uint32_t i = 0; i < NUM_CPUS; i++) {
     cout << endl << "CPU " << i << " cumulative IPC: " << ((float)ooo_cpu[i]->finish_sim_instr / ooo_cpu[i]->finish_sim_cycle);
@@ -529,11 +534,13 @@ int main(int argc, char** argv)
 
   for (auto it = caches.rbegin(); it != caches.rend(); ++it)
     (*it)->impl_replacement_final_stats();
+    */
 
+/*
 #ifndef CRC2_COMPILE
   print_dram_stats();
   print_branch_stats();
 #endif
-
+*/
   return 0;
 }

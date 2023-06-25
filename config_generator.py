@@ -54,7 +54,7 @@ outDict = {
     "block_size": 64,
     "page_size": 4096,
     "heartbeat_frequency": 10000000,
-    "num_cores": 4,
+    "num_cores": num_cpus,
 
     "ooo_cpu": [
     ],
@@ -237,7 +237,7 @@ print("trying to simulate")
 traces_str = ""
 for trace in range(num_cpus):
     traces_str += f"{trace_path}{trace_name} "
-os.system(f"bin/champsim --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str}")
+os.system(f"bin/champsim --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str} >> results/{trace_name}_{simulation_instructions}.txt")
 print("finished everything.")
 
 # TODO: Change main champsim file to only output the necessary stuff
