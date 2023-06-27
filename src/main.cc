@@ -504,12 +504,23 @@ int main(int argc, char** argv)
   cout << endl << "ChampSim completed all CPUs" << endl;
   if (NUM_CPUS > 1) {
     cout << endl << "Total Simulation Statistics (not including warmup)" << endl;
+    int min_cycle_cpu = 0;
+    int min_cycle_count = ooo_cpu[0]->current_cycle - ooo_cpu[0]->begin_sim_cycle;
+    double ipc;
     for (uint32_t i = 0; i < NUM_CPUS; i++) {
+      int cur_cycle_count = ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle;
+      if (cur_cycle_count < min_cycle_count) {
+        min_cycle_cpu = i;
+        min_cycle_count = cur_cycle_count;
+        ipc = (float)(ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr) / (ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle);
+      }
+      /*
       cout << endl
            << "CPU " << i
            << " cumulative IPC: " << (float)(ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr) / (ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle);
       cout << " instructions: " << ooo_cpu[i]->num_retired - ooo_cpu[i]->begin_sim_instr
            << " cycles: " << ooo_cpu[i]->current_cycle - ooo_cpu[i]->begin_sim_cycle << endl;
+           */
       //cout << "The buffer contains " << endl;
       //ooo_cpu[i]->inbox.printBuffer();
       /*
@@ -517,6 +528,11 @@ int main(int argc, char** argv)
         print_sim_stats(i, *it);
         */
     }
+    cout << endl
+           << "CPU " << min_cycle_cpu
+           << " cumulative IPC: " << ipc;
+      cout << " instructions: " << ooo_cpu[min_cycle_cpu]->num_retired - ooo_cpu[min_cycle_cpu]->begin_sim_instr
+           << " cycles: " << min_cycle_count << endl;
     
   }
 
