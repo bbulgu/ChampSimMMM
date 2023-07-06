@@ -40,7 +40,7 @@ ptw_fmtstr = 'PageTableWalker {name}("{name}", {cpu}, {fill_level}, {pscl5_set},
 
 cpu_fmtstr = 'O3_CPU {name}(&broadcast_bus, {index}, {broadcast_latency}, "{memory_partitioning_method}", {frequency}, {DIB[sets]}, {DIB[ways]}, {DIB[window_size]}, {ifetch_buffer_size}, {dispatch_buffer_size}, {decode_buffer_size}, {rob_size}, {lq_size}, {sq_size}, {fetch_width}, {decode_width}, {dispatch_width}, {scheduler_size}, {execute_width}, {lq_width}, {sq_width}, {retire_width}, {mispredict_penalty}, {decode_latency}, {dispatch_latency}, {schedule_latency}, {execute_latency}, &{ITLB}, &{DTLB}, &{L1I}, &{L1D}, O3_CPU::bpred_t::{bpred_name}, O3_CPU::btb_t::{btb_name}, O3_CPU::ipref_t::{iprefetcher_name});\n'
 
-pmem_fmtstr = 'MEMORY_CONTROLLER {attrs[name]}({attrs[frequency]});\n'
+pmem_fmtstr = 'MEMORY_CONTROLLER {name}({attrs[frequency]});\n'
 vmem_fmtstr = 'VirtualMemory vmem({attrs[size]}, 1 << 12, {attrs[num_levels]}, 1, {attrs[minor_fault_penalty]});\n'
 
 module_make_fmtstr = '{1}/%.o: CFLAGS += -I{1}\n{1}/%.o: CXXFLAGS += -I{1}\n{1}/%.o: CXXFLAGS += {2}\nobj/{0}: $(patsubst %.cc,%.o,$(wildcard {1}/*.cc)) $(patsubst %.c,%.o,$(wildcard {1}/*.c))\n\t@mkdir -p $(dir $@)\n\tar -rcs $@ $^\n\n'
@@ -121,11 +121,13 @@ cores = config_file.get('ooo_cpu', [{}])
 # Index the cache array by names
 caches = {c['name']: c for c in config_file.get('cache',[])}
 
+drams = []
 
 # Default branch predictor and BTB
 for i in range(len(cores)):
     cores[i] = ChainMap(cores[i], {'name': 'cpu'+str(i), 'index': i}, copy.deepcopy(dict((k,v) for k,v in config_file.items() if k not in ('ooo_cpu', 'cache'))), default_core.copy())
     cores[i]['DIB'] = ChainMap(cores[i]['DIB'], config_file['DIB'].copy(), default_dib.copy())
+
 
 # Copy or trim cores as necessary to fill out the specified number of cores
 original_size = len(cores)
@@ -145,13 +147,13 @@ for cpu in cores:
             cpu[cache_name] = cpu[cache_name]['name']
 
 # Assign defaults that are unique per core
-for cpu in cores:
+for i, cpu in enumerate(cores):
     cpu['PTW'] = ChainMap(cpu.get('PTW',{}), config_file.get('PTW', {}), {'name': cpu['name'] + '_PTW', 'cpu': cpu['index'], 'frequency': cpu['frequency'], 'lower_level': cpu['L1D']}, default_ptw.copy())
-    caches[cpu['L1I']] = ChainMap(caches[cpu['L1I']], {'frequency': cpu['frequency'], 'lower_level': 'DRAM'}, default_l1i.copy())
-    caches[cpu['L1D']] = ChainMap(caches[cpu['L1D']], {'frequency': cpu['frequency'], 'lower_level': 'DRAM'}, default_l1d.copy())
+    caches[cpu['L1I']] = ChainMap(caches[cpu['L1I']], {'frequency': cpu['frequency'], 'lower_level': f'DRAM{i}'}, default_l1i.copy())
+    caches[cpu['L1D']] = ChainMap(caches[cpu['L1D']], {'frequency': cpu['frequency'], 'lower_level': f'DRAM{i}'}, default_l1d.copy())
     caches[cpu['ITLB']] = ChainMap(caches[cpu['ITLB']], {'frequency': cpu['frequency'], 'lower_level': cpu['STLB']}, default_itlb.copy())
     caches[cpu['DTLB']] = ChainMap(caches[cpu['DTLB']], {'frequency': cpu['frequency'], 'lower_level': cpu['STLB']}, default_dtlb.copy())
-
+    drams.append(f"DRAM{i}")
 
     # STLB
     cache_name = caches[cpu['DTLB']]['lower_level']
@@ -392,9 +394,9 @@ for k in active_keys:
 
 for fill_level in range(1,len(memory_system)+1):
     for k in active_keys:
-        if memory_system[k]['lower_level'] != 'DRAM':
+        if 'DRAM' not in k and 'DRAM' not in memory_system[k]['lower_level']:
             memory_system[memory_system[k]['lower_level']]['fill_level'] = max(memory_system[memory_system[k]['lower_level']].get('fill_level',0), fill_level+1)
-    active_keys = [memory_system[k]['lower_level'] for k in active_keys if memory_system[k]['lower_level'] != 'DRAM']
+    active_keys = [memory_system[k]['lower_level'] for k in active_keys if 'DRAM' not in memory_system[k]['lower_level']]
 
 # Remove name index
 memory_system = list(memory_system.values())
@@ -404,7 +406,7 @@ memory_system.sort(key=operator.itemgetter('fill_level'), reverse=True)
 # Check for lower levels in the array
 for i in reversed(range(len(memory_system))):
     ul = memory_system[i]
-    if ul['lower_level'] != 'DRAM':
+    if 'DRAM' not in ul['lower_level']:
         if not any((ul['lower_level'] == ll['name']) for ll in memory_system[:i]):
             print('Could not find cache "' + ul['lower_level'] + '" in cache array. Exiting...')
             sys.exit(1)
@@ -434,7 +436,8 @@ with open(instantiation_file_name, 'wt') as wfp:
 
     wfp.write(vmem_fmtstr.format(attrs=config_file['virtual_memory']))
     wfp.write('\n')
-    wfp.write(pmem_fmtstr.format(attrs=config_file['physical_memory']))
+    for i in range(len(cores)):
+        wfp.write(pmem_fmtstr.format(attrs=config_file['physical_memory'], name=f"DRAM{i}"))
     for elem in memory_system:
         if 'pscl5_set' in elem:
             wfp.write(ptw_fmtstr.format(**elem))
@@ -455,7 +458,13 @@ with open(instantiation_file_name, 'wt') as wfp:
     wfp.write('\n};\n')
 
     wfp.write('std::array<champsim::operable*, NUM_OPERABLES> operables {\n')
-    wfp.write(', '.join('&{name}'.format(**elem) for elem in itertools.chain(cores, memory_system, (config_file['physical_memory'],))))
+    wfp.write(', '.join('&{name}'.format(**elem) for elem in itertools.chain(cores, memory_system)))
+    wfp.write(', ')
+    wfp.write(', '.join(f'&{dram}' for dram in drams))
+    wfp.write('\n};\n')
+
+    wfp.write('std::array<MEMORY_CONTROLLER*, NUM_CPUS> drams {\n')
+    wfp.write(', '.join(f'&{dram}' for dram in drams))
     wfp.write('\n};\n')
 
 # Core modules file
@@ -676,7 +685,7 @@ with open(constants_header_name, 'wt') as wfp:
     wfp.write(define_fmtstr.format(name='heartbeat_frequency').format(names=const_names, config=config_file))
     wfp.write(define_fmtstr.format(name='num_cores').format(names=const_names, config=config_file))
     wfp.write('#define NUM_CACHES ' + str(len(caches)) + 'u\n')
-    wfp.write('#define NUM_OPERABLES ' + str(len(cores) + len(memory_system) + 1) + 'u\n')
+    wfp.write('#define NUM_OPERABLES ' + str(len(cores) * 2 + len(memory_system)) + 'u\n')
 
     for k in const_names['physical_memory']:
         if k in ['tRP', 'tRCD', 'tCAS', 'turn_around_time']:
@@ -690,8 +699,8 @@ with open(constants_header_name, 'wt') as wfp:
 with open('Makefile', 'wt') as wfp:
     wfp.write('CC := ' + config_file.get('CC', 'gcc') + '\n')
     wfp.write('CXX := ' + config_file.get('CXX', 'g++') + '\n')
-    wfp.write('CFLAGS := ' + config_file.get('CFLAGS', '-O3') + ' -std=gnu99\n')
-    wfp.write('CXXFLAGS := ' + config_file.get('CXXFLAGS', '-O3') + ' -std=c++17\n')
+    wfp.write('CFLAGS := ' + config_file.get('CFLAGS', '-O3') + ' -g -std=gnu99\n')
+    wfp.write('CXXFLAGS := ' + config_file.get('CXXFLAGS', '-O3') + ' -g -std=c++17\n')
     wfp.write('CPPFLAGS := ' + config_file.get('CPPFLAGS', '') + ' -Iinc -MMD -MP\n')
     wfp.write('LDFLAGS := ' + config_file.get('LDFLAGS', '') + '\n')
     wfp.write('LDLIBS := ' + config_file.get('LDLIBS', '') + '\n')

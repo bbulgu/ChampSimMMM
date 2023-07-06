@@ -43,7 +43,7 @@ auto start_time = time(NULL);
 // For backwards compatibility with older module source.
 champsim::deprecated_clock_cycle current_core_cycle;
 
-extern MEMORY_CONTROLLER DRAM;
+extern std::array<MEMORY_CONTROLLER*, NUM_CPUS> drams;
 extern VirtualMemory vmem;
 extern std::array<O3_CPU*, NUM_CPUS> ooo_cpu;
 extern std::array<CACHE*, NUM_CACHES> caches;
@@ -197,7 +197,8 @@ void print_branch_stats()
   }
 }
 
-void print_dram_stats()
+
+void print_dram_stats(MEMORY_CONTROLLER DRAM)
 {
   uint64_t total_congested_cycle = 0;
   uint64_t total_congested_count = 0;
@@ -240,6 +241,7 @@ void print_dram_stats()
     std::cout << std::endl;
   }
 }
+
 
 void reset_cache_stats(uint32_t cpu, CACHE* cache)
 {
@@ -306,11 +308,14 @@ void finish_warmup()
   cout << endl;
 
   // reset DRAM stats
-  for (uint32_t i = 0; i < DRAM_CHANNELS; i++) {
-    DRAM.channels[i].WQ_ROW_BUFFER_HIT = 0;
-    DRAM.channels[i].WQ_ROW_BUFFER_MISS = 0;
-    DRAM.channels[i].RQ_ROW_BUFFER_HIT = 0;
-    DRAM.channels[i].RQ_ROW_BUFFER_MISS = 0;
+  for (int j = 0; j < NUM_CPUS; j++)
+  {
+    for (uint32_t i = 0; i < DRAM_CHANNELS; i++) {
+      drams[j]->channels[i].WQ_ROW_BUFFER_HIT = 0;
+      drams[j]->channels[i].WQ_ROW_BUFFER_MISS = 0;
+      drams[j]->channels[i].RQ_ROW_BUFFER_HIT = 0;
+      drams[j]->channels[i].RQ_ROW_BUFFER_MISS = 0;
+    }
   }
 }
 
