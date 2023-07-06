@@ -56,19 +56,24 @@ void O3_CPU::operate()
 }
 
 /* partition the memory space */
+int shift_n(unsigned long long address, int n) {
+  return (address >> n) % NUM_CPUS;                         
+}
 
+// 6,12
 int O3_CPU::address_to_cpu(unsigned long long address) {
   if (memory_partitioning_method == "basic")
     return address % NUM_CPUS;
   else if (memory_partitioning_method == "zero")
     return 0;
+  else if (memory_partitioning_method == "shift")
+    return shift_n(address, 12);
+  else if (memory_partitioning_method == "shift6")
+    return shift_n(address, 6);
   else // default
     return address % NUM_CPUS; 
 }
 
-int partition_4(unsigned long long address) {
-                            
-}
 
 void InboxBuffer::write(PACKET& pkt){
   if (pkt.written_on_inbox[cpu])        // workaround if within one cycle a packet is written, used and written again (happens if the other cpus haven't written to their inbox yet)
