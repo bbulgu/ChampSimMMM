@@ -1,0 +1,99 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 16
+Off-chip DRAM Size: 128 GiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 1 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 2 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 3 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 4 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 5 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 6 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 7 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 8 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 9 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 10 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 11 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 12 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 13 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 14 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 15 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 1 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 2 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 3 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 4 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 5 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 6 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 7 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 8 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 9 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 10 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 11 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 12 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 13 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 14 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 15 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 4 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 1 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 2 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 3 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 4 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 5 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 6 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 7 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 8 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 9 instructions: 4 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 10 instructions: 4 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 11 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 12 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 13 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 14 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 15 instructions: 5 cycles: 38 (Simulation time: 0 hr 0 min 0 sec) 
+
+Finished CPU 12 instructions: 5000001 cycles: 3137253 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 0 instructions: 5000000 cycles: 3137254 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 9 instructions: 5000000 cycles: 3137254 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 10 instructions: 5000000 cycles: 3137254 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 14 instructions: 5000001 cycles: 3137254 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 1 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 2 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 3 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 4 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 5 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 7 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 8 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 11 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 13 instructions: 5000001 cycles: 3137255 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 6 instructions: 5000001 cycles: 3137256 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+Finished CPU 15 instructions: 5000001 cycles: 3137256 cumulative IPC: 1.59375 (Simulation time: 0 hr 7 min 11 sec) 
+
+ChampSim completed all CPUs
+
+Total Simulation Statistics (not including warmup)
+
+CPU 12 cumulative IPC: 1.59375 instructions: 5000001 cycles: 3137253

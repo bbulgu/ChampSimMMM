@@ -1,0 +1,20 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 1
+Off-chip DRAM Size: 512 MiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/649.fotonik3d_s-1B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 4 cycles: 32 (Simulation time: 0 hr 0 min 0 sec) 
+
+Finished CPU 0 instructions: 5000000 cycles: 7391435 cumulative IPC: 0.676459 (Simulation time: 0 hr 0 min 31 sec) 
+
+ChampSim completed all CPUs
