@@ -27,3 +27,13 @@ Warmup complete CPU 1 instructions: 5 cycles: 36 (Simulation time: 0 hr 0 min 1 
 Warmup complete CPU 2 instructions: 4 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
 Warmup complete CPU 3 instructions: 5 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
 
+Finished CPU 2 instructions: 5000000 cycles: 2997540 cumulative IPC: 1.66803 (Simulation time: 0 hr 12 min 35 sec) 
+Finished CPU 0 instructions: 5000001 cycles: 2997541 cumulative IPC: 1.66803 (Simulation time: 0 hr 12 min 35 sec) 
+Finished CPU 1 instructions: 5000001 cycles: 2997541 cumulative IPC: 1.66803 (Simulation time: 0 hr 12 min 35 sec) 
+Finished CPU 3 instructions: 5000001 cycles: 2997541 cumulative IPC: 1.66803 (Simulation time: 0 hr 12 min 35 sec) 
+
+ChampSim completed all CPUs
+
+Total Simulation Statistics (not including warmup)
+
+CPU 2 cumulative IPC: 1.66803 instructions: 5000000 cycles: 2997540
