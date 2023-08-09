@@ -696,6 +696,7 @@ with open(constants_header_name, 'wt') as wfp:
     wfp.write('#endif\n')
 
 # Makefile
+"""
 with open('Makefile', 'wt') as wfp:
     wfp.write('CC := ' + config_file.get('CC', 'gcc') + '\n')
     wfp.write('CXX := ' + config_file.get('CXX', 'g++') + '\n')
@@ -726,7 +727,7 @@ with open('Makefile', 'wt') as wfp:
     for v in libfilenames.values():
         wfp.write('-include $(wildcard {0}/*.d)\n'.format(*v))
     wfp.write('\n')
-
+"""
 # Configuration cache
 with open(config_cache_name, 'wt') as wfp:
     json.dump(libfilenames, wfp)
