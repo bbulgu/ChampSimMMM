@@ -2,8 +2,44 @@ import json
 import os
 import subprocess
 import time
+import csv
 
 process_list = []
+TraceWeightMap = {}  #{400: {50: 0.2}}  (k1, (k2, v))  k1: traceshortname, k2: simpoint, v: weight all strs
+
+def get_trace_weights():
+    trace_weights_dir = "weights-and-simpoints-speccpu"
+    for dirname in os.listdir(trace_weights_dir):
+        f = os.path.join(trace_weights_dir, dirname)
+        trace_name_short = dirname[0:3]
+        if not TraceWeightMap.get(trace_name_short):
+            TraceWeightMap[trace_name_short] = {}
+        simpoints = os.path.join(f, "simpoints.out")
+        weights = os.path.join(f, "weights.out")
+        with open(simpoints, "r") as sim:
+            with open(weights, "r") as w:
+                simlist = sim.read().split("\n")
+                weightlist = w.read().split("\n")
+                for i in range(len(simlist) - 1):
+                    TraceWeightMap[trace_name_short][simlist[i]] = weightlist[i]
+
+def get_results(RESULTS_DIR):
+    with open(f'{RESULTS_DIR}results.csv', 'w', newline='') as csv_file:
+        writer = csv.writer(csv_file)
+        writer.writerow(["TraceName", "IPC", "Number of Cycles"])
+        for filename in os.listdir(RESULTS_DIR):
+            f = os.path.join(RESULTS_DIR, filename)
+            # checking if it is a file
+            if os.path.isfile(f):
+                print(f)
+                with open(f, "r") as file:
+                    whole_text = file.read()
+                    if ("Finished CPU" in whole_text):
+                        trace_name = filename
+                        ipc = float(whole_text.partition("cumulative IPC: ")[2].partition("(")[0])
+                        cycles = int(whole_text.partition("Finished")[2].partition("cycles: ")[2].partition(" c")[0])
+
+                        writer.writerow([trace_name, ipc, cycles])
 
 def delete_unfinished_logs(directory):
     for filename in os.listdir(directory):
@@ -56,7 +92,6 @@ def isThereAnyoneLeft():
         else:
             process_list.remove(proc)
     return False
-
 
 def create_config_file(broadcast_latency, rob_size, memory_partitioning_method, num_cpus):
     print(f"creating config file for {trace_name_short}_{simulation_instructions}_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency!")
@@ -280,22 +315,29 @@ def create_config_file(broadcast_latency, rob_size, memory_partitioning_method, 
 # change partitioning methods
 trace_path = "traces/"
 
-results_directory = "VaryingCache"
+results_directory = "hunnid"
 
 os.system("module load gcc/13.1.0")
-simulation_instructions = 5000000
+simulation_instructions = 100000000
+
+get_trace_weights()
 
 # main loop to create different executables and run simulations
-for block_size in [8, 32, 128, 512, 2048]:
+for block_size in [2048]:
     for num_cpus in [4]:
-         for mshr_l1d_size in [64]:
+         for mshr_l1d_size in [256]:
             for memory_partitioning_method in ["basic"]:
-                for trace_name in ["649.fotonik3d_s-1B.champsimtrace.xz", "648.exchange2_s-72B.champsimtrace.xz", "605.mcf_s-484B.champsimtrace.xz", "403.gcc-16B.champsimtrace.xz", "444.namd-23B.champsimtrace.xz", "454.calculix_2670B.trace.xz", "434.zeusmp_100B.trace.xz", "603.gcc_39B.trace.xz"]:
+                for trace_name in ["403.gcc-16B.champsimtrace.xz", "403.gcc-17B.champsimtrace.xz","403.gcc-48B.champsimtrace.xz"]:
                     for broadcast_latency in [0, 30]:
                         for rob_size in [1600]:
+                            if num_cpus == 1 and broadcast_latency == 30:
+                                continue
                             trace_name_short = trace_name[0:3]
+                            simpoint = trace_name.partition("-")[2].partition("B.")[0]
+                            weight = TraceWeightMap[trace_name_short][simpoint]
+
                             make_file_name = f"DRAM_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency_rob_{rob_size}"
-                            file_name = f"{results_directory}/{trace_name_short}_{simulation_instructions}_{make_file_name}.txt"
+                            file_name = f"{results_directory}/{trace_name_short}_{weight}_{make_file_name}.txt"
                             if (os.path.isfile(file_name)):
                                 with open(file_name, "r") as file: 
                                     if ("Finished CPU" in file.read()):
@@ -323,17 +365,13 @@ for block_size in [8, 32, 128, 512, 2048]:
                             execute_nowait(f"bin/{make_file_name} --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str} >> {file_name}")
                             print(f"started running {trace_name_short}_{simulation_instructions}_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency")
 
-                            # TODO: Change main champsim file to only output the necessary stuff
-                            # TODO: Pipe the output to a file
-                            # TODO: Create a script to get times from files
-                            # TODO: Add different interleaving options
-                            # TODO: Add some error handling
-                            # TODO: Make this script run the simulator as well
-                            # TODO: Make another script to run this script many times with different stuff
 
-
+# keep checking if theres unfinished jobs
 while isThereAnyoneLeft():
     time.sleep(100)
     print(f"waiting for {len(process_list)} elements to finish.")
 
 delete_unfinished_logs(results_directory)
+
+# write the results to a csv
+get_results(results_directory)
