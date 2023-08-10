@@ -371,7 +371,7 @@ for block_size in BLOCK_SIZE_LIST:
                             weight = TraceWeightMap[trace_name_short][simpoint]
 
                             make_file_name = f"DRAM_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency_rob_{rob_size}"
-                            file_name = f"{results_directory}/{trace_name_short}_{weight}_{make_file_name}.txt"
+                            file_name = f"{results_directory}/{trace_name_short}_{weight}_{make_file_name}_{simpoint}.txt"  ## add simpoint to filename to fix minor potential bug with same weight causing same name and maybe some race conditions
                             if (os.path.isfile(file_name)):
                                 with open(file_name, "r") as file: 
                                     if ("Finished CPU" in file.read()):
