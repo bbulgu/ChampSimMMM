@@ -31,7 +31,7 @@ MEMORY_PARTITIONING_LIST = ["basic"] # ["basic", "zero", "shift", "shift6"]
 results_directory = "hunnid"
 
 os.system("module load gcc/13.1.0")
-simulation_instructions = 100
+simulation_instructions = 100000000
 
 
 def get_trace_weights():
@@ -76,7 +76,7 @@ def get_results(RESULTS_DIR, LATENCY):
                         partitioning = lst[6].partition("partitioning")[0]
                         latency = int(lst[7].partition("latency")[0])
                         rob = int(lst[9].partition(".txt")[0])
-                        ipc = float(whole_text.partition("cumulative IPC: ")[2].partition(" (")[0])
+                        ipc = float(whole_text.partition("Finished")[2].partition("cumulative IPC: ")[2].partition(" (")[0]) ## if heartbeat need finished
                         ipc *= weight
                         if latency == LATENCY:
                             writer.writerow([trace_name, dram, cpus, block, mshr, partitioning, latency, rob, ipc]) 
