@@ -3,6 +3,8 @@ import os
 import subprocess
 import time
 import csv
+import pandas as pd
+import re
 
 process_list = []
 TraceWeightMap = {}  #{400: {50: 0.2}}  (k1, (k2, v))  k1: traceshortname, k2: simpoint, v: weight all strs
@@ -23,23 +25,43 @@ def get_trace_weights():
                 for i in range(len(simlist) - 1):
                     TraceWeightMap[trace_name_short][simlist[i]] = weightlist[i]
 
-def get_results(RESULTS_DIR):
-    with open(f'{RESULTS_DIR}results.csv', 'w', newline='') as csv_file:
+def get_results(RESULTS_DIR, LATENCY):
+    csv_file_name = f'{RESULTS_DIR}/results_{LATENCY}latency.csv'
+    with open(csv_file_name, 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(["TraceName", "IPC", "Number of Cycles"])
-        for filename in os.listdir(RESULTS_DIR):
+        writer.writerow(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB", "IPC"])
+        files = os.listdir(RESULTS_DIR)
+        files.sort()
+        
+        for filename in files:
             f = os.path.join(RESULTS_DIR, filename)
             # checking if it is a file
             if os.path.isfile(f):
-                print(f)
+                #print(f)
                 with open(f, "r") as file:
                     whole_text = file.read()
                     if ("Finished CPU" in whole_text):
-                        trace_name = filename
-                        ipc = float(whole_text.partition("cumulative IPC: ")[2].partition("(")[0])
-                        cycles = int(whole_text.partition("Finished")[2].partition("cycles: ")[2].partition(" c")[0])
+                        lst = filename.split("_")
+                        trace_name = lst[0]
+                        weight = float(lst[1])
+                        dram = lst[2] == "DRAM"
+                        cpus = int(lst[3].partition("cpus")[0])
+                        block = int(lst[4].partition("block")[0])
+                        mshr = int(lst[5].partition("mshr")[0])
+                        partitioning = lst[6].partition("partitioning")[0]
+                        latency = int(lst[7].partition("latency")[0])
+                        rob = int(lst[9].partition(".txt")[0])
+                        ipc = float(whole_text.partition("cumulative IPC: ")[2].partition(" (")[0])
+                        ipc *= weight
+                        if latency == LATENCY:
+                            writer.writerow([trace_name, dram, cpus, block, mshr, partitioning, latency, rob, ipc]) 
 
-                        writer.writerow([trace_name, ipc, cycles])
+
+    df = pd.read_csv(csv_file_name)
+    print(df)
+    df = df.groupby(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB"]).agg({"IPC": "sum"})
+    print(df)
+    df.to_csv(f'{RESULTS_DIR}/pandas_results_{LATENCY}latency.csv')
 
 def delete_unfinished_logs(directory):
     for filename in os.listdir(directory):
@@ -86,12 +108,13 @@ def isAlive(proc):
                 
 def isThereAnyoneLeft():
     print("checking if anyone left")
+    anyone = False
     for proc in process_list:
         if isAlive(proc):
-            return True
+            anyone = True
         else:
             process_list.remove(proc)
-    return False
+    return anyone
 
 def create_config_file(broadcast_latency, rob_size, memory_partitioning_method, num_cpus):
     print(f"creating config file for {trace_name_short}_{simulation_instructions}_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency!")
@@ -312,28 +335,38 @@ def create_config_file(broadcast_latency, rob_size, memory_partitioning_method, 
 # cache sizes we want: 4, 16, 64, 256, 1024 KBs 
 # block sizes:         8, 32, 128, 512, 2048
 
-# change partitioning methods
 trace_path = "traces/"
 
-results_directory = "hunnid"
+BLOCK_SIZE_LIST = [2048] #[8, 32, 128, 512, 2048]
+NUM_CPU_LIST = [4] #[1, 4, 16, 64]
+MSHR_LIST = [256]  #[1, 4, 16, 64, 256]
+TRACES_LIST = os.listdir(trace_path)
+BROADCAST_LATENCY_LIST = [0, 30] #[0, 30, 120]
+ROB_SIZE_LIST = [100, 200, 400, 800, 1600]
+MEMORY_PARTITIONING_LIST = ["basic"] # ["basic", "zero", "shift", "shift6"] 
+
+# change partitioning methods
+
+results_directory = "endtoendtest"
 
 os.system("module load gcc/13.1.0")
-simulation_instructions = 100000000
+simulation_instructions = 100
 
 get_trace_weights()
 
 # main loop to create different executables and run simulations
-for block_size in [2048]:
-    for num_cpus in [4]:
-         for mshr_l1d_size in [256]:
-            for memory_partitioning_method in ["basic"]:
-                for trace_name in ["403.gcc-16B.champsimtrace.xz", "403.gcc-17B.champsimtrace.xz","403.gcc-48B.champsimtrace.xz"]:
-                    for broadcast_latency in [0, 30]:
-                        for rob_size in [1600]:
-                            if num_cpus == 1 and broadcast_latency == 30:
+for block_size in BLOCK_SIZE_LIST:
+    for num_cpus in NUM_CPU_LIST:
+         for mshr_l1d_size in MSHR_LIST:
+            for memory_partitioning_method in MEMORY_PARTITIONING_LIST:
+                for rob_size in ROB_SIZE_LIST:
+                    for broadcast_latency in BROADCAST_LATENCY_LIST:
+                        for trace_name in TRACES_LIST:
+                            if num_cpus == 1 and broadcast_latency != 0:
                                 continue
                             trace_name_short = trace_name[0:3]
-                            simpoint = trace_name.partition("-")[2].partition("B.")[0]
+                            exp = "(\d+)(?!.*\d)"  # regexp to get the last number in a string
+                            simpoint = re.findall(exp, trace_name)[0]
                             weight = TraceWeightMap[trace_name_short][simpoint]
 
                             make_file_name = f"DRAM_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency_rob_{rob_size}"
@@ -363,15 +396,16 @@ for block_size in [2048]:
                                 traces_str += f"{trace_path}{trace_name} "
 
                             execute_nowait(f"bin/{make_file_name} --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str} >> {file_name}")
-                            print(f"started running {trace_name_short}_{simulation_instructions}_{num_cpus}cpus_{block_size}block_{mshr_l1d_size}mshr_{memory_partitioning_method}partitioning_{broadcast_latency}latency")
+                            print(f"started running {file_name}")
 
 
 # keep checking if theres unfinished jobs
 while isThereAnyoneLeft():
-    time.sleep(100)
+    time.sleep(5)
     print(f"waiting for {len(process_list)} elements to finish.")
 
 delete_unfinished_logs(results_directory)
 
 # write the results to a csv
-get_results(results_directory)
+for latency in BROADCAST_LATENCY_LIST:
+    get_results(results_directory, latency)
