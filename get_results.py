@@ -1,23 +1,45 @@
 import os
 import csv
 import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
 
-# parse variables
-# sort based on latencies
-def get_results(LATENCY):
-    RESULTS_DIR = "toy"
-    csv_file_name = f'{RESULTS_DIR}results_{LATENCY}latency.csv'
+
+def plotMyCSV(csv_file, changingValue):
+    df = pd.read_csv(csv_file)
+    df_pivot = pd.pivot_table(
+    df,
+    values="final IPC",
+    index="TraceName",
+    columns=changingValue,
+    aggfunc=np.mean
+    )
+
+    # Plot a bar chart using the DF
+    ax = df_pivot.plot(kind="bar")
+    # Get a Matplotlib figure from the axes object for formatting purposes
+    fig = ax.get_figure()
+    # Change the plot dimensions (width, height)
+    fig.set_size_inches(7, 6)
+    # Change the axes labels
+    ax.set_xlabel("Trace Name")
+    ax.set_ylabel("IPC")
+
+    fig.savefig(f"{csv_file}_{changingValue}_barplot.png")
+
+
+def get_results(RESULTS_DIR, LATENCY, CHANGING_VALUE):
+    csv_file_name = f'{RESULTS_DIR}/results_{LATENCY}latency.csv'
     with open(csv_file_name, 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file)
-        writer.writerow(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB", "IPC"])
+        writer.writerow(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB", "Weight", "IPC"])
         files = os.listdir(RESULTS_DIR)
         files.sort()
         
         for filename in files:
             f = os.path.join(RESULTS_DIR, filename)
             # checking if it is a file
-            if os.path.isfile(f):
-                #print(f)
+            if os.path.isfile(f) and f.endswith(".txt"):
                 with open(f, "r") as file:
                     whole_text = file.read()
                     if ("Finished CPU" in whole_text):
@@ -31,18 +53,16 @@ def get_results(LATENCY):
                         partitioning = lst[6].partition("partitioning")[0]
                         latency = int(lst[7].partition("latency")[0])
                         rob = int(lst[9].partition(".txt")[0])
-                        ipc = float(whole_text.partition("cumulative IPC: ")[2].partition(" (")[0])
+                        ipc = float(whole_text.partition("Finished")[2].partition("cumulative IPC: ")[2].partition(" (")[0]) ## if heartbeat need finished
                         ipc *= weight
                         if latency == LATENCY:
-                            writer.writerow([trace_name, dram, cpus, block, mshr, partitioning, latency, rob, ipc])
-
-
-    df = pd.read_csv(csv_file_name)
-    print(df)
-    df = df.groupby(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB"]).agg({"IPC": "sum"})
-    print(df)
-    df.to_csv(f'pandas_{csv_file_name}')
+                            writer.writerow([trace_name, dram, cpus, block, mshr, partitioning, latency, rob, weight, ipc]) 
     
+    df = pd.read_csv(csv_file_name)
+    df = df.groupby(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB"]).agg({"IPC": "sum", "Weight": "sum"})
+    df["final IPC"] = df["IPC"] / df["Weight"]
+    fin_csv_name = f'{RESULTS_DIR}/pandas_results_{LATENCY}latency.csv'
 
-get_results(0)
-get_results(30)
+    df.to_csv(fin_csv_name)
+
+    plotMyCSV(fin_csv_name, CHANGING_VALUE)

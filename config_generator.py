@@ -3,8 +3,13 @@ import os
 import subprocess
 import time
 import csv
+import get_results
 import pandas as pd
 import re
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 
 process_list = []
 TraceWeightMap = {}  #{400: {50: 0.2}}  (k1, (k2, v))  k1: traceshortname, k2: simpoint, v: weight all strs
@@ -18,22 +23,45 @@ TraceWeightMap = {}  #{400: {50: 0.2}}  (k1, (k2, v))  k1: traceshortname, k2: s
 
 trace_path = "traces/"
 
-BLOCK_SIZE_LIST = [2048] #[8, 32, 128, 512, 2048]
+BLOCK_SIZE_LIST = [8, 32, 128, 512, 2048]
 NUM_CPU_LIST = [4] #[1, 4, 16, 64]
 MSHR_LIST = [256]  #[1, 4, 16, 64, 256]
-TRACES_LIST = ["403.gcc-16B.champsimtrace.xz", "403.gcc-17B.champsimtrace.xz", "403.gcc-48B.champsimtrace.xz"]  # os.listdir(trace_path)
+TRACES_LIST = os.listdir(trace_path) # ["403.gcc-16B.champsimtrace.xz", "403.gcc-17B.champsimtrace.xz", "403.gcc-48B.champsimtrace.xz"]  # os.listdir(trace_path)
 BROADCAST_LATENCY_LIST = [0, 30] #[0, 30, 120]
 ROB_SIZE_LIST = [1600] # [100, 200, 400, 800, 1600]
 MEMORY_PARTITIONING_LIST = ["basic"] # ["basic", "zero", "shift", "shift6"] 
 
+# "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB",
+VARIABLE = "BlockSize"
 # change partitioning methods
 
-results_directory = "hunnid"
+results_directory = "BlockSizeResults"
 
 os.system("module load gcc/13.1.0")
-simulation_instructions = 100000000
+simulation_instructions = 5000000
 
+""" def plotMyCSV(csv_file, changingValue):
+    df = pd.read_csv(csv_file)
+    df_pivot = pd.pivot_table(
+    df,
+    values="IPC",
+    index="TraceName",
+    columns=changingValue,
+    aggfunc=np.mean
+    )
 
+    # Plot a bar chart using the DF
+    ax = df_pivot.plot(kind="bar")
+    # Get a Matplotlib figure from the axes object for formatting purposes
+    fig = ax.get_figure()
+    # Change the plot dimensions (width, height)
+    fig.set_size_inches(7, 6)
+    # Change the axes labels
+    ax.set_xlabel("Trace Name")
+    ax.set_ylabel("IPC")
+
+    fig.savefig(f"{csv_file}_{changingValue}_barplot.png")
+ """
 def get_trace_weights():
     trace_weights_dir = "weights-and-simpoints-speccpu"
     for dirname in os.listdir(trace_weights_dir):
@@ -50,7 +78,7 @@ def get_trace_weights():
                 for i in range(len(simlist) - 1):
                     TraceWeightMap[trace_name_short][simlist[i]] = weightlist[i]
 
-def get_results(RESULTS_DIR, LATENCY):
+""" def get_results(RESULTS_DIR, LATENCY, CHANGING_VALUE):
     csv_file_name = f'{RESULTS_DIR}/results_{LATENCY}latency.csv'
     with open(csv_file_name, 'w+', newline='') as csv_file:
         writer = csv.writer(csv_file)
@@ -61,7 +89,7 @@ def get_results(RESULTS_DIR, LATENCY):
         for filename in files:
             f = os.path.join(RESULTS_DIR, filename)
             # checking if it is a file
-            if os.path.isfile(f):
+            if os.path.isfile(f) and f.endswith(".txt"):
                 #print(f)
                 with open(f, "r") as file:
                     whole_text = file.read()
@@ -86,18 +114,25 @@ def get_results(RESULTS_DIR, LATENCY):
     print(df)
     df = df.groupby(["TraceName", "DRAM", "Cpus", "BlockSize", "MSHR", "Partitioning", "Latency", "ROB"]).agg({"IPC": "sum"})
     print(df)
-    df.to_csv(f'{RESULTS_DIR}/pandas_results_{LATENCY}latency.csv')
+    fin_csv_name = f'{RESULTS_DIR}/pandas_results_{LATENCY}latency.csv'
 
+    df.to_csv(fin_csv_name)
+
+    plotMyCSV(fin_csv_name, CHANGING_VALUE)
+ """
 def delete_unfinished_logs(directory):
+    total_unfinished = 0
     for filename in os.listdir(directory):
         f = os.path.join(directory, filename)
         # checking if it is a file
-        if os.path.isfile(f):
-            print(f)
+        if os.path.isfile(f) and f.endswith(".txt"):
             with open(f, "r") as file: 
                 if ("Finished CPU" not in file.read()):
-                    print("yeaahh buddy you gotta go!")
-                    #os.remove(f)
+                    print(f"deleting {f}!")
+                    os.remove(f)
+                    total_unfinished += 1
+
+    print(f"there were {total_unfinished} jobs")
 
 def execute_command(command):
     try:
@@ -132,7 +167,6 @@ def isAlive(proc):
     return False
                 
 def isThereAnyoneLeft():
-    print("checking if anyone left")
     anyone = False
     for proc in process_list:
         if isAlive(proc):
@@ -399,14 +433,17 @@ for block_size in BLOCK_SIZE_LIST:
                             execute_nowait(f"bin/{make_file_name} --warmup_instructions 0 --simulation_instructions {simulation_instructions} {traces_str} >> {file_name}")
                             print(f"started running {file_name}")
 
+leftJobs = len(process_list)
 
 # keep checking if theres unfinished jobs
 while isThereAnyoneLeft():
     time.sleep(5)
-    print(f"waiting for {len(process_list)} elements to finish.")
+    if (len(process_list) < leftJobs):
+        leftJobs = len(process_list)
+        print(f"waiting for {leftJobs} elements to finish.")
 
 delete_unfinished_logs(results_directory)
 
 # write the results to a csv
 for latency in BROADCAST_LATENCY_LIST:
-    get_results(results_directory, latency)
+    get_results.get_results(results_directory, latency, VARIABLE)
