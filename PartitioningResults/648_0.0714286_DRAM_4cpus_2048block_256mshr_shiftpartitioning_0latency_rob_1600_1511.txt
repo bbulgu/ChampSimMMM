@@ -1,0 +1,121 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 4
+Off-chip DRAM Size: 128 GiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 1 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 2 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 3 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 1 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 2 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 3 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 1 cycles: 46 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 1 instructions: 1 cycles: 46 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 2 instructions: 1 cycles: 46 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 3 instructions: 10 cycles: 46 (Simulation time: 0 hr 0 min 1 sec) 
+
+Finished CPU 1 instructions: 5000001 cycles: 4444249 cumulative IPC: 1.12505 (Simulation time: 0 hr 9 min 43 sec) 
+Finished CPU 2 instructions: 5000001 cycles: 4444252 cumulative IPC: 1.12505 (Simulation time: 0 hr 9 min 43 sec) 
+Finished CPU 0 instructions: 5000001 cycles: 4444253 cumulative IPC: 1.12505 (Simulation time: 0 hr 9 min 43 sec) 
+DEADLOCK! CPU 1 cycle 4444295
+IFETCH_BUFFER empty
+ROB head instr_id: 5000002 translated: 2 fetched: 2 scheduled: 2 executed: 2 is_memory: 0 num_reg_dependent: 0 event: 4444293
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 1 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu3_DTLB MSHR empty
+
+cpu3_ITLB MSHR empty
+
+cpu3_L1I MSHR empty
+
+cpu2_DTLB MSHR empty
+
+cpu2_ITLB MSHR empty
+
+cpu2_L1I MSHR empty
+
+cpu1_DTLB MSHR empty
+
+cpu1_ITLB MSHR empty
+
+cpu1_L1I MSHR empty
+
+cpu0_DTLB MSHR empty
+
+cpu0_ITLB MSHR empty
+
+cpu0_L1I MSHR empty
+
+cpu3_STLB MSHR empty
+
+cpu1_STLB MSHR empty
+
+DEADLOCK! CPU 0 cycle 4444299
+IFETCH_BUFFER head instr_id: 5000032 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 4444298
+ROB head instr_id: 5000002 translated: 2 fetched: 2 scheduled: 2 executed: 2 is_memory: 0 num_reg_dependent: 0 event: 4444297
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 1 fetched: 0
+[LQ] entry: 1 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 2 cycle 4444298
+IFETCH_BUFFER head instr_id: 5000034 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 4444297
+ROB head instr_id: 5000002 translated: 2 fetched: 2 scheduled: 2 executed: 2 is_memory: 0 num_reg_dependent: 0 event: 4444296
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 1 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 3 cycle 5444281
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 4444281
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 1 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 2 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu0_L1D MSHR empty
+
+cpu1_L1D MSHR empty
+
+cpu2_L1D MSHR empty
+
+cpu3_L1D MSHR empty
+
+cpu0_PTW MSHR empty
+
+cpu1_PTW MSHR empty
+
+cpu2_PTW MSHR empty
+
+cpu3_PTW MSHR empty
+
+cpu0_STLB MSHR empty
+
+cpu2_STLB MSHR empty
+
+
+
+
+
