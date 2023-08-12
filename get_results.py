@@ -5,11 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def plotMyCSV(csv_file, changingValue):
+def plotMyCSV(csv_file, changingValue, IPCValue):
     df = pd.read_csv(csv_file)
     df_pivot = pd.pivot_table(
     df,
-    values="final IPC",
+    values=IPCValue,
     index="TraceName",
     columns=changingValue,
     aggfunc=np.mean
@@ -23,9 +23,9 @@ def plotMyCSV(csv_file, changingValue):
     fig.set_size_inches(7, 6)
     # Change the axes labels
     ax.set_xlabel("Trace Name")
-    ax.set_ylabel("IPC")
+    ax.set_ylabel(IPCValue)
 
-    fig.savefig(f"{csv_file}_{changingValue}_barplot.png")
+    fig.savefig(f"{csv_file}_{changingValue}_{IPCValue}barplot.png")
 
 
 def get_results(RESULTS_DIR, LATENCY, CHANGING_VALUE):
@@ -63,6 +63,42 @@ def get_results(RESULTS_DIR, LATENCY, CHANGING_VALUE):
     df["final IPC"] = df["IPC"] / df["Weight"]
     fin_csv_name = f'{RESULTS_DIR}/pandas_results_{LATENCY}latency.csv'
 
-    df.to_csv(fin_csv_name)
+    mins = df.groupby("TraceName").min("final IPC").rename(columns={'final IPC':'min IPC'})
+    mins = mins[["min IPC"]]
+    df_new = df.join(mins, on="TraceName")
+    df_new["normalized IPC"] = df_new["final IPC"] / df_new["min IPC"]
 
-    plotMyCSV(fin_csv_name, CHANGING_VALUE)
+    df_new.to_csv(fin_csv_name)
+
+    plotMyCSV(fin_csv_name, CHANGING_VALUE, "normalized IPC")
+    plotMyCSV(fin_csv_name, CHANGING_VALUE, "final IPC")
+
+
+def get_all_results():
+    get_results("BlockSizeResults", 0, "BlockSize")
+    get_results("BlockSizeResults", 30, "BlockSize")
+    get_results("DramResults", 0, "DRAM")
+    get_results("DramResults", 30, "DRAM")
+    get_results("PartitioningResults", 0, "Partitioning")
+    get_results("PartitioningResults", 30, "Partitioning")
+    get_results("RobResults", 30, "ROB")
+    get_results("RobResults", 0, "ROB")
+    get_results("MSHRResults", 0, "MSHR")
+    get_results("MSHRResults", 30, "MSHR")
+
+    # manually do latency
+    """
+    df0 = pd.read_csv("LatencyResults/pandas_results_0latency.csv")
+    df1 = pd.read_csv("LatencyResults/pandas_results_30latency.csv")
+    df2 = pd.read_csv("LatencyResults/pandas_results_120latency.csv")
+    df3 = pd.read_csv("LatencyResults/pandas_results_480latency.csv")
+    frames = [df0, df1, df2, df3]
+    df = pd.concat(frames)
+    mins = df.groupby("TraceName").min("final IPC").rename(columns={'final IPC':'min IPC'})
+    mins = mins[["min IPC"]]
+    df_new = df.join(mins, on="TraceName")
+    df_new["normalized IPC"] = df_new["final IPC"] / df_new["min IPC"]
+    df_new.to_csv("pandas_normalized_combined_results.csv")
+    plotMyCSV("LatencyResults/pandas_normalized_combined_results.csv", "Latency", "normalized IPC")
+    """
+    # add cpus
