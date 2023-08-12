@@ -1,0 +1,182 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 4
+Off-chip DRAM Size: 128 GiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/444.namd-44B.champsimtrace.xz
+CPU 1 runs traces/444.namd-44B.champsimtrace.xz
+CPU 2 runs traces/444.namd-44B.champsimtrace.xz
+CPU 3 runs traces/444.namd-44B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 1 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 2 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 3 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 4 cycles: 36 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 1 instructions: 9 cycles: 36 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 2 instructions: 4 cycles: 36 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 3 instructions: 4 cycles: 36 (Simulation time: 0 hr 0 min 0 sec) 
+
+Finished CPU 0 instructions: 5000001 cycles: 2404027 cumulative IPC: 2.07984 (Simulation time: 0 hr 17 min 15 sec) 
+Finished CPU 2 instructions: 5000001 cycles: 2404058 cumulative IPC: 2.07982 (Simulation time: 0 hr 17 min 15 sec) 
+Finished CPU 3 instructions: 5000001 cycles: 2404060 cumulative IPC: 2.07982 (Simulation time: 0 hr 17 min 15 sec) 
+cpu2_STLB MSHR empty
+
+cpu1_STLB MSHR empty
+
+cpu0_L1I MSHR empty
+
+cpu0_ITLB MSHR empty
+
+cpu0_DTLB MSHR empty
+
+cpu1_L1I MSHR empty
+
+cpu1_ITLB MSHR empty
+
+cpu1_DTLB MSHR empty
+
+cpu2_L1I MSHR empty
+
+cpu2_ITLB MSHR empty
+
+cpu2_DTLB MSHR empty
+
+cpu3_L1I MSHR empty
+
+cpu3_ITLB MSHR empty
+
+DEADLOCK! CPU 1 cycle 3403303
+IFETCH_BUFFER head instr_id: 5001669 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 3403302
+ROB head instr_id: 5000005 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 2403303
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000165 address: 0 translated: 1 fetched: 0
+[LQ] entry: 1 instr_id: 5000176 address: 0 translated: 0 fetched: 0
+[LQ] entry: 2 instr_id: 5000170 address: 0 translated: 1 fetched: 0
+[LQ] entry: 3 instr_id: 5000005 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000162 address: 0 translated: 1 fetched: 0
+[LQ] entry: 5 instr_id: 5000007 address: 0 translated: 0 fetched: 0
+[LQ] entry: 6 instr_id: 5000009 address: 0 translated: 0 fetched: 0
+[LQ] entry: 7 instr_id: 5000010 address: 0 translated: 0 fetched: 0
+[LQ] entry: 8 instr_id: 5000011 address: 0 translated: 0 fetched: 0
+[LQ] entry: 9 instr_id: 5000014 address: 0 translated: 0 fetched: 0
+[LQ] entry: 10 instr_id: 5000015 address: 0 translated: 0 fetched: 0
+[LQ] entry: 11 instr_id: 5000018 address: 0 translated: 0 fetched: 0
+[LQ] entry: 12 instr_id: 5000019 address: 0 translated: 0 fetched: 0
+[LQ] entry: 13 instr_id: 5000077 address: 0 translated: 0 fetched: 0
+[LQ] entry: 14 instr_id: 5000078 address: 0 translated: 0 fetched: 0
+[LQ] entry: 15 instr_id: 5000081 address: 0 translated: 0 fetched: 0
+[LQ] entry: 16 instr_id: 5000161 address: 0 translated: 0 fetched: 0
+[LQ] entry: 17 instr_id: 5000186 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 0 cycle 2404063
+IFETCH_BUFFER head instr_id: 5001669 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 2404062
+ROB head instr_id: 5000005 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 2403265
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000165 address: 0 translated: 1 fetched: 0
+[LQ] entry: 2 instr_id: 5000170 address: 0 translated: 1 fetched: 0
+[LQ] entry: 3 instr_id: 5000005 address: f6e817d8 translated: 2 fetched: 0
+[LQ] entry: 4 instr_id: 5000007 address: f6e817d0 translated: 2 fetched: 0
+[LQ] entry: 5 instr_id: 5000162 address: 0 translated: 1 fetched: 0
+[LQ] entry: 6 instr_id: 5000009 address: f6e817c8 translated: 2 fetched: 0
+[LQ] entry: 7 instr_id: 5000010 address: f6e81798 translated: 2 fetched: 0
+[LQ] entry: 8 instr_id: 5000011 address: f6e817b8 translated: 2 fetched: 0
+[LQ] entry: 9 instr_id: 5000014 address: f6e817a8 translated: 2 fetched: 0
+[LQ] entry: 10 instr_id: 5000015 address: f6e817b0 translated: 2 fetched: 0
+[LQ] entry: 11 instr_id: 5000018 address: f6e81788 translated: 2 fetched: 0
+[LQ] entry: 12 instr_id: 5000019 address: 0 translated: 1 fetched: 0
+[LQ] entry: 13 instr_id: 5000077 address: 0 translated: 1 fetched: 0
+[LQ] entry: 14 instr_id: 5000078 address: 0 translated: 1 fetched: 0
+[LQ] entry: 15 instr_id: 5000081 address: 0 translated: 1 fetched: 0
+[LQ] entry: 16 instr_id: 5000161 address: 0 translated: 0 fetched: 0
+[LQ] entry: 17 instr_id: 5000186 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu3_DTLB MSHR empty
+
+cpu0_STLB MSHR empty
+
+cpu3_PTW MSHR empty
+
+cpu2_PTW MSHR empty
+
+cpu1_PTW MSHR empty
+
+cpu0_PTW MSHR empty
+
+cpu3_L1D MSHR empty
+
+cpu2_L1D MSHR empty
+
+cpu1_L1D MSHR empty
+
+cpu0_L1D MSHR empty
+
+DEADLOCK! CPU 3 cycle 2404096
+IFETCH_BUFFER head instr_id: 5001669 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 2404095
+ROB head instr_id: 5000005 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 2403303
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000165 address: 0 translated: 1 fetched: 0
+[LQ] entry: 1 instr_id: 5000176 address: 0 translated: 0 fetched: 0
+[LQ] entry: 2 instr_id: 5000170 address: 0 translated: 1 fetched: 0
+[LQ] entry: 3 instr_id: 5000005 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000162 address: 0 translated: 1 fetched: 0
+[LQ] entry: 5 instr_id: 5000007 address: 0 translated: 0 fetched: 0
+[LQ] entry: 6 instr_id: 5000009 address: 0 translated: 0 fetched: 0
+[LQ] entry: 7 instr_id: 5000010 address: 0 translated: 0 fetched: 0
+[LQ] entry: 8 instr_id: 5000011 address: 0 translated: 0 fetched: 0
+[LQ] entry: 9 instr_id: 5000014 address: 0 translated: 0 fetched: 0
+[LQ] entry: 10 instr_id: 5000015 address: 0 translated: 0 fetched: 0
+[LQ] entry: 11 instr_id: 5000018 address: 0 translated: 0 fetched: 0
+[LQ] entry: 12 instr_id: 5000019 address: 0 translated: 0 fetched: 0
+[LQ] entry: 13 instr_id: 5000077 address: 0 translated: 0 fetched: 0
+[LQ] entry: 14 instr_id: 5000078 address: 0 translated: 0 fetched: 0
+[LQ] entry: 15 instr_id: 5000081 address: 0 translated: 0 fetched: 0
+[LQ] entry: 16 instr_id: 5000161 address: 0 translated: 0 fetched: 0
+[LQ] entry: 17 instr_id: 5000186 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 2 cycle 2404094
+IFETCH_BUFFER head instr_id: 5001669 translated: 2 fetched: 2 scheduled: 0 executed: 0 is_memory: 0 num_reg_dependent: 0 event: 2404093
+ROB head instr_id: 5000005 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 2403303
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000165 address: 0 translated: 1 fetched: 0
+[LQ] entry: 2 instr_id: 5000170 address: 0 translated: 1 fetched: 0
+[LQ] entry: 3 instr_id: 5000005 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000162 address: 0 translated: 1 fetched: 0
+[LQ] entry: 5 instr_id: 5000007 address: 0 translated: 0 fetched: 0
+[LQ] entry: 6 instr_id: 5000009 address: 0 translated: 0 fetched: 0
+[LQ] entry: 7 instr_id: 5000010 address: 0 translated: 0 fetched: 0
+[LQ] entry: 8 instr_id: 5000011 address: 0 translated: 0 fetched: 0
+[LQ] entry: 9 instr_id: 5000014 address: 0 translated: 0 fetched: 0
+[LQ] entry: 10 instr_id: 5000015 address: 0 translated: 0 fetched: 0
+[LQ] entry: 11 instr_id: 5000018 address: 0 translated: 0 fetched: 0
+[LQ] entry: 12 instr_id: 5000019 address: 0 translated: 0 fetched: 0
+[LQ] entry: 13 instr_id: 5000077 address: 0 translated: 0 fetched: 0
+[LQ] entry: 14 instr_id: 5000078 address: 0 translated: 0 fetched: 0
+[LQ] entry: 15 instr_id: 5000081 address: 0 translated: 0 fetched: 0
+[LQ] entry: 16 instr_id: 5000161 address: 0 translated: 0 fetched: 0
+[LQ] entry: 17 instr_id: 5000186 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu3_STLB MSHR empty
+
+
+
+
+

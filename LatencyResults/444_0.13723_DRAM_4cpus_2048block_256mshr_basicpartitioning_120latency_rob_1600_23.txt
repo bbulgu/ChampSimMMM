@@ -1,0 +1,39 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 4
+Off-chip DRAM Size: 128 GiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/444.namd-23B.champsimtrace.xz
+CPU 1 runs traces/444.namd-23B.champsimtrace.xz
+CPU 2 runs traces/444.namd-23B.champsimtrace.xz
+CPU 3 runs traces/444.namd-23B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 1 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 2 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 3 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 2 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 1 instructions: 2 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 2 instructions: 2 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
+Warmup complete CPU 3 instructions: 2 cycles: 36 (Simulation time: 0 hr 0 min 1 sec) 
+
+Finished CPU 0 instructions: 5000004 cycles: 2325696 cumulative IPC: 2.1499 (Simulation time: 0 hr 19 min 59 sec) 
+Finished CPU 1 instructions: 5000003 cycles: 2325819 cumulative IPC: 2.14978 (Simulation time: 0 hr 19 min 59 sec) 
+Finished CPU 2 instructions: 5000002 cycles: 2325819 cumulative IPC: 2.14978 (Simulation time: 0 hr 19 min 59 sec) 
+Finished CPU 3 instructions: 5000003 cycles: 2325819 cumulative IPC: 2.14978 (Simulation time: 0 hr 19 min 59 sec) 
+
+ChampSim completed all CPUs
+
+Total Simulation Statistics (not including warmup)
+
+CPU 0 cumulative IPC: 1.83516e-318 instructions: 5000004 cycles: 2325696
