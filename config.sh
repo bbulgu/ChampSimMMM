@@ -686,6 +686,7 @@ with open(constants_header_name, 'wt') as wfp:
 
     wfp.write('#endif\n')
 
+"""
 # Makefile
 with open('Makefile', 'wt') as wfp:
     wfp.write('CC := ' + config_file.get('CC', 'gcc') + '\n')
@@ -721,3 +722,4 @@ with open('Makefile', 'wt') as wfp:
 # Configuration cache
 with open(config_cache_name, 'wt') as wfp:
     json.dump(libfilenames, wfp)
+"""
