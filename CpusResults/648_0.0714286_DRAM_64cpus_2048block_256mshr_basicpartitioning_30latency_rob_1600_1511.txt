@@ -1,0 +1,1818 @@
+
+*** ChampSim Multicore Out-of-Order Simulator ***
+
+Warmup Instructions: 0
+Simulation Instructions: 5000000
+Number of CPUs: 64
+Off-chip DRAM Size: 128 GiB Channels: 1 Width: 64-bit Data Rate: 3200 MT/s
+
+VirtualMemory physical capacity: 8588881920 num_ppages: 2096895
+VirtualMemory page size: 4096 log2_page_size: 12
+
+CPU 0 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 1 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 2 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 3 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 4 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 5 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 6 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 7 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 8 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 9 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 10 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 11 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 12 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 13 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 14 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 15 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 16 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 17 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 18 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 19 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 20 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 21 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 22 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 23 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 24 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 25 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 26 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 27 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 28 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 29 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 30 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 31 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 32 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 33 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 34 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 35 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 36 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 37 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 38 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 39 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 40 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 41 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 42 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 43 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 44 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 45 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 46 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 47 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 48 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 49 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 50 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 51 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 52 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 53 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 54 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 55 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 56 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 57 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 58 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 59 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 60 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 61 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 62 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 63 runs traces/648.exchange2_s-1511B.champsimtrace.xz
+CPU 0 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 1 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 2 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 3 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 4 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 5 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 6 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 7 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 8 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 9 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 10 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 11 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 12 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 13 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 14 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 15 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 16 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 17 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 18 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 19 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 20 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 21 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 22 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 23 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 24 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 25 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 26 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 27 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 28 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 29 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 30 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 31 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 32 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 33 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 34 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 35 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 36 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 37 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 38 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 39 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 40 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 41 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 42 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 43 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 44 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 45 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 46 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 47 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 48 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 49 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 50 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 51 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 52 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 53 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 54 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 55 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 56 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 57 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 58 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 59 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 60 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 61 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 62 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+CPU 63 Bimodal branch predictor
+Basic BTB sets: 1024 ways: 8 indirect buffer size: 4096 RAS size: 64
+
+Warmup complete CPU 0 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 1 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 2 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 3 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 4 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 5 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 6 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 7 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 8 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 9 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 10 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 11 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 12 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 13 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 14 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 15 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 16 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 17 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 18 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 19 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 20 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 21 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 22 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 23 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 24 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 25 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 26 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 27 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 28 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 29 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 30 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 31 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 32 instructions: 6 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 33 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 34 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 35 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 36 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 37 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 38 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 39 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 40 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 41 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 42 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 43 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 44 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 45 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 46 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 47 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 48 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 49 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 50 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 51 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 52 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 53 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 54 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 55 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 56 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 57 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 58 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 59 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 60 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 61 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 62 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+Warmup complete CPU 63 instructions: 1 cycles: 83 (Simulation time: 0 hr 0 min 0 sec) 
+
+Finished CPU 56 instructions: 5000002 cycles: 7877613 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 0 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 1 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 2 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 3 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 4 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 5 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 6 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 7 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 8 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 9 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 10 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 11 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 12 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 13 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 14 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 15 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 16 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 17 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 18 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 19 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 20 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 21 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 22 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 23 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 24 instructions: 5000003 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 25 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 26 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 27 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 28 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 29 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 30 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 31 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 33 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 34 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 35 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 36 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 37 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 38 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 39 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 40 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 41 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 42 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 43 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 44 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 45 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 46 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 47 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 48 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 49 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 50 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 51 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 52 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 53 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 54 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 55 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 57 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 58 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 59 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 60 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 61 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 62 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+Finished CPU 63 instructions: 5000002 cycles: 7877614 cumulative IPC: 0.63471 (Simulation time: 0 hr 49 min 20 sec) 
+cpu27_PTW MSHR empty
+
+cpu32_PTW MSHR empty
+
+DEADLOCK! CPU 2 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 3 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu28_L1D MSHR empty
+
+DEADLOCK! CPU 5 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 6 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 7 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 8 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 9 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 10 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 11 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 12 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 13 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 14 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 15 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 16 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 17 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 18 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 19 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu44_L1D MSHR empty
+
+DEADLOCK! CPU 21 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 22 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 23 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 24 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000004 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877687
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000004 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+[LQ] entry: 5 instr_id: 5000005 address: 0 translated: 0 fetched: 0
+[LQ] entry: 6 instr_id: 5000006 address: 0 translated: 0 fetched: 0
+[LQ] entry: 7 instr_id: 5000020 address: 0 translated: 0 fetched: 0
+[LQ] entry: 8 instr_id: 5000028 address: 0 translated: 0 fetched: 0
+[LQ] entry: 9 instr_id: 5000036 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+[SQ] entry: 0 instr_id: 5000004 address: 181a16d24 translated: 2 fetched: 2
+[SQ] entry: 3 instr_id: 5000005 address: 181a16d48 translated: 2 fetched: 2
+[SQ] entry: 4 instr_id: 5000006 address: 181a16d6c translated: 2 fetched: 2
+[SQ] entry: 5 instr_id: 5000009 address: 181a16310 translated: 2 fetched: 2
+
+DEADLOCK! CPU 25 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 26 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 27 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu36_PTW MSHR empty
+
+DEADLOCK! CPU 29 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 30 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 31 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu35_PTW MSHR empty
+
+DEADLOCK! CPU 33 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 34 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 35 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 36 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 37 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 38 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 39 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 40 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877628
+Load Queue Entry
+[LQ] entry: 3 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 5 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 41 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 42 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 43 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu52_PTW MSHR empty
+
+DEADLOCK! CPU 45 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 46 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 47 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 48 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 2 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 49 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 50 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 51 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 52 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 1 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 53 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 54 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 55 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 56 cycle 7877696
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 2 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 57 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 58 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 59 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 60 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 61 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 62 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 63 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu0_L1D MSHR empty
+
+cpu1_L1D MSHR empty
+
+cpu2_L1D MSHR empty
+
+cpu3_L1D MSHR empty
+
+cpu54_DTLB MSHR empty
+
+cpu5_L1D MSHR empty
+
+cpu56_ITLB MSHR empty
+
+cpu7_L1D MSHR empty
+
+cpu8_L1D MSHR empty
+
+cpu9_L1D MSHR empty
+
+cpu10_L1D MSHR empty
+
+cpu11_L1D MSHR empty
+
+cpu12_L1D MSHR empty
+
+cpu13_L1D MSHR empty
+
+cpu14_L1D MSHR empty
+
+cpu15_L1D MSHR empty
+
+cpu62_L1D MSHR empty
+
+cpu17_L1D MSHR empty
+
+cpu18_L1D MSHR empty
+
+cpu19_L1D MSHR empty
+
+cpu20_L1D MSHR empty
+
+cpu21_L1D MSHR empty
+
+cpu22_L1D MSHR empty
+
+cpu23_L1D MSHR empty
+
+cpu24_L1D MSHR empty
+
+cpu25_L1D MSHR empty
+
+cpu26_L1D MSHR empty
+
+cpu27_L1D MSHR empty
+
+DEADLOCK! CPU 4 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu29_L1D MSHR empty
+
+cpu30_L1D MSHR empty
+
+cpu31_L1D MSHR empty
+
+cpu32_L1D MSHR empty
+
+cpu33_L1D MSHR empty
+
+cpu57_DTLB MSHR empty
+
+cpu35_L1D MSHR empty
+
+cpu36_L1D MSHR empty
+
+cpu37_L1D MSHR empty
+
+cpu38_L1D MSHR empty
+
+cpu39_L1D MSHR empty
+
+cpu40_L1D MSHR empty
+
+cpu41_L1D MSHR empty
+
+cpu42_L1D MSHR empty
+
+cpu43_L1D MSHR empty
+
+cpu52_L1D MSHR empty
+
+cpu45_L1D MSHR empty
+
+cpu46_L1D MSHR empty
+
+cpu47_L1D MSHR empty
+
+cpu16_STLB MSHR empty
+
+cpu40_PTW MSHR empty
+
+cpu50_L1D MSHR empty
+
+cpu48_L1I MSHR empty
+
+cpu12_STLB MSHR empty
+
+cpu53_L1D MSHR empty
+
+cpu54_L1D MSHR empty
+
+cpu55_L1D MSHR empty
+
+cpu56_L1D MSHR empty
+
+cpu57_L1D MSHR empty
+
+cpu58_L1D MSHR empty
+
+cpu59_L1D MSHR empty
+
+cpu60_L1D MSHR empty
+
+cpu39_PTW MSHR empty
+
+cpu16_L1D MSHR empty
+
+cpu63_L1D MSHR empty
+
+cpu38_PTW MSHR empty
+
+cpu1_PTW MSHR empty
+
+cpu2_PTW MSHR empty
+
+cpu3_PTW MSHR empty
+
+cpu36_L1I MSHR empty
+
+cpu5_PTW MSHR empty
+
+cpu6_PTW MSHR empty
+
+cpu7_PTW MSHR empty
+
+cpu8_PTW MSHR empty
+
+cpu9_PTW MSHR empty
+
+cpu10_PTW MSHR empty
+
+cpu11_PTW MSHR empty
+
+cpu32_STLB MSHR empty
+
+cpu24_PTW MSHR empty
+
+cpu14_PTW MSHR empty
+
+cpu15_PTW MSHR empty
+
+cpu16_PTW MSHR empty
+
+cpu17_PTW MSHR empty
+
+cpu18_PTW MSHR empty
+
+cpu19_PTW MSHR empty
+
+cpu20_PTW MSHR empty
+
+cpu21_PTW MSHR empty
+
+cpu22_PTW MSHR empty
+
+cpu23_PTW MSHR empty
+
+cpu26_PTW MSHR empty
+
+cpu25_PTW MSHR empty
+
+cpu61_L1D MSHR empty
+
+cpu31_STLB MSHR empty
+
+DEADLOCK! CPU 1 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+DEADLOCK! CPU 28 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu0_STLB MSHR empty
+
+DEADLOCK! CPU 32 cycle 8877718
+IFETCH_BUFFER empty
+ROB head instr_id: 5000004 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877718
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000004 address: 0 translated: 0 fetched: 0
+[LQ] entry: 1 instr_id: 5000005 address: 0 translated: 0 fetched: 0
+[LQ] entry: 2 instr_id: 5000006 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000020 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000028 address: 0 translated: 0 fetched: 0
+[LQ] entry: 5 instr_id: 5000036 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+[SQ] entry: 0 instr_id: 5000004 address: 181a16d24 translated: 2 fetched: 2
+[SQ] entry: 1 instr_id: 5000005 address: 181a16d48 translated: 2 fetched: 2
+[SQ] entry: 2 instr_id: 5000006 address: 181a16d6c translated: 2 fetched: 2
+[SQ] entry: 3 instr_id: 5000009 address: 181a16310 translated: 2 fetched: 2
+
+cpu60_STLB MSHR empty
+
+cpu26_DTLB MSHR empty
+
+cpu28_PTW MSHR empty
+
+cpu37_ITLB MSHR empty
+
+DEADLOCK! CPU 0 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu31_PTW MSHR empty
+
+cpu53_DTLB MSHR empty
+
+cpu13_PTW MSHR empty
+
+cpu49_L1D MSHR empty
+
+cpu41_PTW MSHR empty
+
+cpu42_PTW MSHR empty
+
+cpu43_PTW MSHR empty
+
+cpu44_PTW MSHR empty
+
+cpu45_PTW MSHR empty
+
+cpu46_PTW MSHR empty
+
+cpu47_PTW MSHR empty
+
+cpu48_PTW MSHR empty
+
+cpu49_PTW MSHR empty
+
+cpu50_PTW MSHR empty
+
+cpu51_PTW MSHR empty
+
+DEADLOCK! CPU 44 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+[LQ] entry: 4 instr_id: 5000016 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu53_PTW MSHR empty
+
+cpu58_L1I MSHR empty
+
+cpu55_PTW MSHR empty
+
+cpu56_PTW MSHR empty
+
+cpu57_PTW MSHR empty
+
+cpu58_PTW MSHR empty
+
+cpu59_PTW MSHR empty
+
+cpu60_PTW MSHR empty
+
+cpu61_PTW MSHR empty
+
+cpu62_PTW MSHR empty
+
+cpu63_PTW MSHR empty
+
+cpu34_PTW MSHR empty
+
+cpu1_STLB MSHR empty
+
+cpu2_STLB MSHR empty
+
+cpu3_STLB MSHR empty
+
+cpu48_STLB MSHR empty
+
+cpu5_STLB MSHR empty
+
+cpu6_STLB MSHR empty
+
+cpu7_STLB MSHR empty
+
+cpu8_STLB MSHR empty
+
+cpu9_STLB MSHR empty
+
+cpu10_STLB MSHR empty
+
+cpu11_STLB MSHR empty
+
+DEADLOCK! CPU 20 cycle 7877697
+IFETCH_BUFFER empty
+ROB head instr_id: 5000003 translated: 2 fetched: 2 scheduled: 2 executed: 1 is_memory: 1 num_reg_dependent: 0 event: 7877659
+Load Queue Entry
+[LQ] entry: 0 instr_id: 5000008 address: 0 translated: 0 fetched: 0
+[LQ] entry: 3 instr_id: 5000003 address: 0 translated: 0 fetched: 0
+
+Store Queue Entry
+
+cpu13_STLB MSHR empty
+
+cpu14_STLB MSHR empty
+
+cpu15_STLB MSHR empty
+
+cpu48_L1D MSHR empty
+
+cpu17_STLB MSHR empty
+
+cpu55_ITLB MSHR empty
+
+cpu19_STLB MSHR empty
+
+cpu20_STLB MSHR empty
+
+cpu21_STLB MSHR empty
+
+cpu22_STLB MSHR empty
+
+cpu23_STLB MSHR empty
+
+cpu24_STLB MSHR empty
+
+cpu25_STLB MSHR empty
+
+cpu26_STLB MSHR empty
+
+cpu27_STLB MSHR empty
+
+cpu59_L1I MSHR empty
+
+cpu29_STLB MSHR empty
+
+cpu30_STLB MSHR empty
+
+cpu0_PTW MSHR empty
+
+cpu30_PTW MSHR empty
+
+cpu33_STLB MSHR empty
+
+cpu34_STLB MSHR empty
+
+cpu35_STLB MSHR empty
+
+cpu54_ITLB MSHR empty
+
+cpu37_STLB MSHR empty
+
+cpu38_STLB MSHR empty
+
+cpu39_STLB MSHR empty
+
+cpu40_STLB MSHR empty
+
+cpu41_STLB MSHR empty
+
+cpu42_STLB MSHR empty
+
+cpu43_STLB MSHR empty
+
+cpu44_STLB MSHR empty
+
+cpu45_STLB MSHR empty
+
+cpu46_STLB MSHR empty
+
+cpu47_STLB MSHR empty
+
+cpu4_STLB MSHR empty
+
+cpu49_STLB MSHR empty
+
+cpu50_STLB MSHR empty
+
+cpu51_STLB MSHR empty
+
+cpu4_L1I MSHR empty
+
+cpu53_STLB MSHR empty
+
+cpu54_STLB MSHR empty
+
+cpu55_STLB MSHR empty
+
+cpu56_STLB MSHR empty
+
+cpu57_STLB MSHR empty
+
+cpu58_STLB MSHR empty
+
+cpu59_STLB MSHR empty
+
+cpu12_PTW MSHR empty
+
+cpu61_STLB MSHR empty
+
+cpu62_STLB MSHR empty
+
+cpu63_STLB MSHR empty
+
+cpu0_L1I MSHR empty
+
+cpu0_ITLB MSHR empty
+
+cpu0_DTLB MSHR empty
+
+cpu1_L1I MSHR empty
+
+cpu1_ITLB MSHR empty
+
+cpu1_DTLB MSHR empty
+
+cpu2_L1I MSHR empty
+
+cpu2_ITLB MSHR empty
+
+cpu2_DTLB MSHR empty
+
+cpu3_L1I MSHR empty
+
+cpu3_ITLB MSHR empty
+
+cpu3_DTLB MSHR empty
+
+cpu52_STLB MSHR empty
+
+cpu4_ITLB MSHR empty
+
+cpu4_DTLB MSHR empty
+
+cpu5_L1I MSHR empty
+
+cpu5_ITLB MSHR empty
+
+cpu5_DTLB MSHR empty
+
+cpu6_L1I MSHR empty
+
+cpu6_ITLB MSHR empty
+
+cpu6_DTLB MSHR empty
+
+cpu7_L1I MSHR empty
+
+cpu7_ITLB MSHR empty
+
+cpu7_DTLB MSHR empty
+
+cpu8_L1I MSHR empty
+
+cpu8_ITLB MSHR empty
+
+cpu8_DTLB MSHR empty
+
+cpu9_L1I MSHR empty
+
+cpu9_ITLB MSHR empty
+
+cpu9_DTLB MSHR empty
+
+cpu10_L1I MSHR empty
+
+cpu10_ITLB MSHR empty
+
+cpu10_DTLB MSHR empty
+
+cpu11_L1I MSHR empty
+
+cpu11_ITLB MSHR empty
+
+cpu11_DTLB MSHR empty
+
+cpu20_L1I MSHR empty
+
+cpu12_ITLB MSHR empty
+
+cpu25_ITLB MSHR empty
+
+cpu13_L1I MSHR empty
+
+cpu13_ITLB MSHR empty
+
+cpu13_DTLB MSHR empty
+
+cpu14_L1I MSHR empty
+
+cpu14_ITLB MSHR empty
+
+cpu14_DTLB MSHR empty
+
+cpu15_L1I MSHR empty
+
+cpu15_ITLB MSHR empty
+
+cpu15_DTLB MSHR empty
+
+cpu16_L1I MSHR empty
+
+cpu16_ITLB MSHR empty
+
+cpu16_DTLB MSHR empty
+
+cpu56_DTLB MSHR empty
+
+cpu17_ITLB MSHR empty
+
+cpu17_DTLB MSHR empty
+
+cpu18_L1I MSHR empty
+
+cpu18_ITLB MSHR empty
+
+cpu18_DTLB MSHR empty
+
+cpu19_L1I MSHR empty
+
+cpu19_ITLB MSHR empty
+
+cpu19_DTLB MSHR empty
+
+cpu12_L1I MSHR empty
+
+cpu20_ITLB MSHR empty
+
+cpu20_DTLB MSHR empty
+
+cpu21_L1I MSHR empty
+
+cpu21_ITLB MSHR empty
+
+cpu21_DTLB MSHR empty
+
+cpu58_DTLB MSHR empty
+
+cpu22_ITLB MSHR empty
+
+cpu22_DTLB MSHR empty
+
+cpu23_L1I MSHR empty
+
+cpu23_ITLB MSHR empty
+
+cpu23_DTLB MSHR empty
+
+cpu24_L1I MSHR empty
+
+cpu24_ITLB MSHR empty
+
+cpu24_DTLB MSHR empty
+
+cpu25_L1I MSHR empty
+
+cpu57_L1I MSHR empty
+
+cpu25_DTLB MSHR empty
+
+cpu26_L1I MSHR empty
+
+cpu26_ITLB MSHR empty
+
+cpu37_PTW MSHR empty
+
+cpu27_L1I MSHR empty
+
+cpu27_ITLB MSHR empty
+
+cpu27_DTLB MSHR empty
+
+cpu49_ITLB MSHR empty
+
+cpu28_ITLB MSHR empty
+
+cpu28_DTLB MSHR empty
+
+cpu29_L1I MSHR empty
+
+cpu29_ITLB MSHR empty
+
+cpu29_DTLB MSHR empty
+
+cpu30_L1I MSHR empty
+
+cpu30_ITLB MSHR empty
+
+cpu30_DTLB MSHR empty
+
+cpu31_L1I MSHR empty
+
+cpu36_STLB MSHR empty
+
+cpu31_DTLB MSHR empty
+
+cpu32_L1I MSHR empty
+
+cpu32_ITLB MSHR empty
+
+cpu32_DTLB MSHR empty
+
+cpu33_L1I MSHR empty
+
+cpu62_DTLB MSHR empty
+
+cpu33_DTLB MSHR empty
+
+cpu34_L1I MSHR empty
+
+cpu34_ITLB MSHR empty
+
+cpu34_DTLB MSHR empty
+
+cpu35_L1I MSHR empty
+
+cpu35_ITLB MSHR empty
+
+cpu35_DTLB MSHR empty
+
+cpu33_PTW MSHR empty
+
+cpu55_DTLB MSHR empty
+
+cpu36_DTLB MSHR empty
+
+cpu37_L1I MSHR empty
+
+cpu29_PTW MSHR empty
+
+cpu37_DTLB MSHR empty
+
+cpu38_L1I MSHR empty
+
+cpu38_ITLB MSHR empty
+
+cpu38_DTLB MSHR empty
+
+cpu39_L1I MSHR empty
+
+cpu39_ITLB MSHR empty
+
+cpu39_DTLB MSHR empty
+
+cpu40_L1I MSHR empty
+
+cpu40_ITLB MSHR empty
+
+cpu50_L1I MSHR empty
+
+cpu41_L1I MSHR empty
+
+cpu40_DTLB MSHR empty
+
+cpu41_DTLB MSHR empty
+
+cpu42_L1I MSHR empty
+
+cpu42_ITLB MSHR empty
+
+cpu42_DTLB MSHR empty
+
+cpu43_L1I MSHR empty
+
+cpu43_ITLB MSHR empty
+
+cpu43_DTLB MSHR empty
+
+cpu44_L1I MSHR empty
+
+cpu44_ITLB MSHR empty
+
+cpu44_DTLB MSHR empty
+
+cpu45_L1I MSHR empty
+
+cpu50_ITLB MSHR empty
+
+cpu45_DTLB MSHR empty
+
+cpu46_L1I MSHR empty
+
+cpu46_ITLB MSHR empty
+
+cpu46_DTLB MSHR empty
+
+cpu47_L1I MSHR empty
+
+cpu47_ITLB MSHR empty
+
+cpu47_DTLB MSHR empty
+
+cpu17_L1I MSHR empty
+
+cpu48_ITLB MSHR empty
+
+cpu48_DTLB MSHR empty
+
+cpu49_L1I MSHR empty
+
+cpu56_L1I MSHR empty
+
+cpu49_DTLB MSHR empty
+
+cpu31_ITLB MSHR empty
+
+cpu55_L1I MSHR empty
+
+cpu50_DTLB MSHR empty
+
+cpu51_L1I MSHR empty
+
+cpu51_ITLB MSHR empty
+
+cpu51_DTLB MSHR empty
+
+cpu52_L1I MSHR empty
+
+cpu52_ITLB MSHR empty
+
+cpu52_DTLB MSHR empty
+
+cpu53_L1I MSHR empty
+
+cpu53_ITLB MSHR empty
+
+cpu4_PTW MSHR empty
+
+cpu54_L1I MSHR empty
+
+cpu4_L1D MSHR empty
+
+cpu41_ITLB MSHR empty
+
+cpu63_DTLB MSHR empty
+
+cpu57_ITLB MSHR empty
+
+cpu22_L1I MSHR empty
+
+cpu28_STLB MSHR empty
+
+cpu58_ITLB MSHR empty
+
+cpu18_STLB MSHR empty
+
+cpu54_PTW MSHR empty
+
+cpu59_ITLB MSHR empty
+
+cpu28_L1I MSHR empty
+
+cpu36_ITLB MSHR empty
+
+cpu12_DTLB MSHR empty
+
+cpu6_L1D MSHR empty
+
+cpu34_L1D MSHR empty
+
+cpu51_L1D MSHR empty
+
+cpu59_DTLB MSHR empty
+
+cpu45_ITLB MSHR empty
+
+cpu60_ITLB MSHR empty
+
+cpu60_DTLB MSHR empty
+
+cpu61_L1I MSHR empty
+
+cpu61_ITLB MSHR empty
+
+cpu61_DTLB MSHR empty
+
+cpu62_L1I MSHR empty
+
+cpu62_ITLB MSHR empty
+
+cpu33_ITLB MSHR empty
+
+cpu63_L1I MSHR empty
+
+cpu63_ITLB MSHR empty
+
+cpu60_L1I MSHR empty
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
